@@ -41,9 +41,9 @@ public class BoardUpdateProcAction implements Action {
 		String content = req.getParameter("content");
 		User principal = (User) req.getSession().getAttribute("user");
 		
-		System.out.println(title);
-		System.out.println(content);
-		System.out.println(principal.getId());
+		System.out.println("title: "+title);
+		System.out.println("content: "+content);
+		System.out.println("principa.getId(): "+principal.getId());
 		
 		// 권한 검증!!
 		if(userId != principal.getId()) {

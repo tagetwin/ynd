@@ -17,15 +17,16 @@
 					<form action="/yp/board?cmd=writeProc" method="post">
 						<div class="form-group">
 							<label for="title">Title</label>
-							<input type="text" class="form-control" required="required" name="title" />
+							<input type="text" class="form-control" required="required" name="title" value="${buVM.board.boardTitle}"/>
 						</div>
 						<div class="form-group">
 							<label for="content">Content </label>
-							<textarea rows="7" class="form-control" required="required" name="content" ></textarea>
+							<textarea rows="7" class="form-control" required="required" name="content" >${buVM.board.content}</textarea>
 						</div>
 						<div class="form-group float-right">
-							<button type="submit" class="btn btn-primary">Post</button>
-							<button class="btn btn-default">Cancel</button>
+							<button type="submit" class="btn btn-primary">Update</button>
+							<a href="/yp/" class="btn btn-default">Cancel</a>
+<!-- 							<button class="btn btn-default">Cancel</button> -->
 						</div>
 					</form>
 				</div>

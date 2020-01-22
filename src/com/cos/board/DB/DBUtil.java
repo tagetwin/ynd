@@ -12,7 +12,7 @@ public class DBUtil {
 			Context envContext  = (Context)initContext.lookup("java:/comp/env");
 			DataSource ds = (DataSource)envContext.lookup("jdbc/TestDB");
 			Connection conn = ds.getConnection();
-			System.out.println("DB Success");
+//			System.out.println("DB Success");
 			return conn;
 		} catch (Exception e) {
 			e.printStackTrace();

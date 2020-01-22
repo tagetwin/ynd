@@ -35,10 +35,11 @@ public class UserdeleteAction implements Action {
 
 		BoardDao boardDao = BoardDao.getInstance();
 		int result2 = boardDao.deleteAll(id);
-		System.out.println("작성글 삭제성공");
+		System.out.println(result2 + "작성글 삭제성공");
 		
 		int result = userDao.delete(id);
-		System.out.println("아이디 삭제성공");
+		System.out.println(result + "아이디 삭제성공");
+		
 		
 		RequestDispatcher dis;
 		

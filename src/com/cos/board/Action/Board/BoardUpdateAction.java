@@ -35,11 +35,11 @@ public class BoardUpdateAction implements Action {
 		int id = Integer.parseInt(req.getParameter("id"));
 		int userId = Integer.parseInt(req.getParameter("userId"));
 		
-		System.out.println(id);
-		System.out.println(userId);
+		System.out.println("id" + id);
+		System.out.println("userId" + userId);
 		
 		//principal 접근 주체
-		User principal = (User) req.getSession().getAttribute("user");
+		User principal = (User) req.getSession().getAttribute("principal");
 		
 		// 권한 검증!!
 		if(userId != principal.getId()) {

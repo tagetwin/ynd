@@ -27,16 +27,16 @@ public class BoardDao {
 		return instance;
 	}
 
-	public int save(String title, String content, int userId) {
+	public int save(String boardTitle, String content, int userId) {
 		// 1. Stream 연결
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
 		try {
 			// 2. 쿼리 전송 클래스 (규약에 맞게)
-			final String SQL = "INSERT INTO board (title, content, userId, createTime) VALUES (?, ?, ?, date_format(now(), '%Y-%m-%d %k:%i'))";
+			final String SQL = "INSERT INTO board (boardTitle, content, userId, boardCreateTime) VALUES (?, ?, ?, now())";
 			pstmt = conn.prepareStatement(SQL);
 			// 3. SQL문 완성하기
-			pstmt.setString(1, title);
+			pstmt.setString(1, boardTitle);
 			pstmt.setString(2, content);
 			pstmt.setInt(3, userId);
 			// 4. SQL문 전송하기
@@ -58,16 +58,16 @@ public class BoardDao {
 		return -1;
 	}
 
-	public int update(String title, String content, int id) {
+	public int update(String boardTitle, String content, int id) {
 		// 1. Stream 연결
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
 		try {
 			// 2. 쿼리 전송 클래스 (규약에 맞게)
-			final String SQL = "UPDATE board SET title = ?, content = ? WHERE id = ?";
+			final String SQL = "UPDATE board SET boardTitle = ?, content = ? WHERE id = ?";
 			pstmt = conn.prepareStatement(SQL);
 			// 3. SQL문 완성하기
-			pstmt.setString(1, title);
+			pstmt.setString(1, boardTitle);
 			pstmt.setString(2, content);
 			pstmt.setInt(3, id);
 
@@ -243,52 +243,6 @@ public class BoardDao {
 				buVM = new BoardUserVM(board, user);
 			}
 			return buVM;
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				pstmt.close();
-				rs.close();
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return null;
-	}
-
-	public User login(String username, String password) {
-		// 1. Stream 연결
-		Connection conn = DBUtil.getConnection();
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-			// 2. 쿼리 전송 클래스 (규약에 맞게)
-			final String SQL = "SELECT * FROM user WHERE username = ? and password = ?";
-			pstmt = conn.prepareStatement(SQL);
-			// 3. SQL문 완성하기
-			pstmt.setString(1, username);
-			pstmt.setString(2, password);
-
-			// 4. SQL문 전송하기
-			rs = pstmt.executeQuery();
-			User user = null;
-
-			if (rs.next()) {
-				int id = rs.getInt("ID");
-				String email = rs.getString("email");
-				Timestamp createTime = rs.getTimestamp("createTime");
-
-				user = User.builder()
-						.id(id)
-						.username(username)
-						.email(email)
-						.createTime(createTime)
-						.address("부산")
-						.build();
-			}
-
-			return user;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

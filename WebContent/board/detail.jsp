@@ -15,28 +15,29 @@
 			<div class="col-lg-8 posts-list">
 				<div class="single-post">
 					<div class="feature-img">
-						<img class="img-fluid" src="img/blog/single_blog_1.png" alt="">
+						<img class="img-fluid" src="img/blog/lol.jpg" alt="">
 					</div>
 					<div class="blog_details">
-						<h2>Second divided from form fish beast made every of seas all gathered us saying he our</h2>
+						<h2>${buVM.board.boardTitle}</h2>
 						<ul class="blog-info-link mt-3 mb-4">
 							<li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
 							<li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+							<c:choose>
+								<c:when test="${sessionScope.principal.id eq buVM.board.userId}">
+									<li><a href="/yp/board?cmd=update&userId=${buVM.board.userId}&id=${buVM.board.id}"><i class="fas fa-edit"></i> Update </a></li>
+									<li><a href="/yp/board?cmd=delete&userId=${buVM.board.userId}&id=${buVM.board.id}"><i class="fas fa-trash-alt"></i> Delete </a></li>
+								</c:when>
+							</c:choose>
 						</ul>
-						<p class="excert">MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study
-							materials yourself at a fraction of the camp price. However, who has the willpower</p>
-						<p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at
-							a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually</p>
-						<div class="quote-wrapper">
-							<div class="quotes">MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study
-								materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training.</div>
-						</div>
-						<p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at
-							a fraction of the camp price. However, who has the willpower</p>
-						<p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at
-							a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually</p>
+						<p class="excert">${buVM.board.content}</p>
 					</div>
 				</div>
+				<form action="">
+				<input type="hidden" name>
+				
+				</form>
+				
+				
 				<div class="navigation-top">
 					<div class="d-sm-flex justify-content-between text-center">
 						<p class="like-info">
@@ -46,10 +47,10 @@
 							<!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
 						</div>
 						<ul class="social-icons">
-							<li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-							<li><a href="#"><i class="fa fa-behance"></i></a></li>
+							<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href="#"><i class="fab fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fab fa-dribbble"></i></a></li>
+							<li><a href="#"><i class="fab fa-behance"></i></a></li>
 						</ul>
 					</div>
 					<div class="navigation-area">
@@ -94,7 +95,7 @@
 						<img src="img/blog/author.png" alt="">
 						<div class="media-body">
 							<a href="#">
-								<h4>Harvard milan</h4>
+								<h4>${buVM.user.username}</h4>
 							</a>
 							<p>Second divided from form fish beast made. Every of seas all gathered use saying you're, he our dominion twon Second divided from</p>
 						</div>

@@ -32,11 +32,11 @@ public class BoardWriteProcAction implements Action {
 		
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
-		User user = (User) req.getSession().getAttribute("user");
+		User user = (User) req.getSession().getAttribute("principal");
 		
 		System.out.println(title);
 		System.out.println(content);
-		System.out.println(user.getId());
+		System.out.println(user.getId()); 
 		
 		BoardDao boardDao = BoardDao.getInstance();
 		int result = boardDao.save(title, content, user.getId());

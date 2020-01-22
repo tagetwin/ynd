@@ -17,19 +17,15 @@
 					<c:forEach var="board" items="${boards}" varStatus="status">
 						<article class="blog_item">
 							<div class="blog_item_img">
-								<img class="card-img rounded-0" src="img/blog/single_blog_1.png" alt=""> <a href="#" class="blog_item_date">
+								<img class="card-img rounded-0" src="img/blog/lol.jpg" alt=""> <a href="#" class="blog_item_date">
 									<h3><fmt:formatDate value="${board.boardCreateTime}" pattern="dd"/></h3>
 									<p>Jan</p>
 								</a>
 							</div>
 
 							<div class="blog_details">
-								<a class="d-inline-block" href="/yp/board?cmd=detail&id=${board.id}">
-									<h3>${board.boardTitle}</h3>
-								</a>
-								<p>
-								<h2>${board.content}</h2>
-								</p>
+								<a class="d-inline-block" href="/yp/board?cmd=detail&id=${board.id}"><h3>${board.boardTitle}</h3></a>
+								<p class="excert">${board.content}</p>
 								<ul class="blog-info-link">
 									<li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
 									<li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
