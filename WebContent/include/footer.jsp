@@ -47,10 +47,11 @@
                   Navigation
                 </h3>
                 <ul>
-                  <li><a href="#test-form2">Join</a></li>
-                  <li><a href="#test-form">Login</a></li>
-                  <li><a href="/blog.html">Blog</a></li>
-                  <li><a href="/gallery.html">Gallery</a></li>
+                  <li><a href="#test-form2" class="login popup-with-form">Join</a></li>
+                  
+                  <li><a href="#test-form" class="login popup-with-form">Login</a></li>
+                  <li><a href="/yp/board?cmd=list">Blog</a></li>
+                  <li><a href="/yp/board?cmd=gallerylist">Gallery</a></li>
                 </ul>
               </div>
             </div>
@@ -95,8 +96,7 @@
     <!-- footer -->
 
 
-
-    <!-- JS here -->
+<!-- JS here -->
     <script src="js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="js/vendor/jquery-1.12.4.min.js"></script>
     <script src="js/popper.min.js"></script>
@@ -126,13 +126,9 @@
     <script src="js/main.js"></script>
     
     <script>
-	$(function(){
-		if(${sessionScope.principal.username}==null){
-			alert("널");
-			}else {
-				alert("트루");
-				}
-	});
-    </script>
+    	$('#delete').on('click', function(){
+		$('#deleteForm').submit();	
+		});
+	</script>
   </body>
 </html>

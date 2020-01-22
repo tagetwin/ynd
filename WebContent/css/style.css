@@ -510,9 +510,25 @@ h3 {
   -o-transition: 0.3s;
   transition: 0.3s;
 }
+.boxed_btn_red {
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff;
+  padding: 12px 30px;
+  background: #f73b47;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  border: 1px solid transparent;
+  display: inline-block;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
 
 /* line 124, C:/Users/SPN Graphics/Desktop/cl sep/HTML/scss/_btn.scss */
-.boxed_btn_green:hover {
+.boxed_btn_green:hover .boxed_btn_red:hover{
   background: transparent;
   color: #00d363;
   border: 1px solid #00d363;
@@ -1481,7 +1497,7 @@ h3 {
 }
 
 /* line 138, C:/Users/SPN Graphics/Desktop/cl sep/HTML/scss/_prising.scss */
-.package_prsing_area .boxed_btn_green {
+.package_prsing_area .boxed_btn_green .boxed_btn_red{
   padding: 12px 49px;
 }
 
@@ -1557,13 +1573,13 @@ h3 {
 }
 
 /* line 176, C:/Users/SPN Graphics/Desktop/cl sep/HTML/scss/_prising.scss */
-.have_question .chat .boxed_btn_green {
+.have_question .chat .boxed_btn_green .boxed_btn_red{
   margin-right: 10px;
 }
 
 @media (max-width: 767px) {
   /* line 176, C:/Users/SPN Graphics/Desktop/cl sep/HTML/scss/_prising.scss */
-  .have_question .chat .boxed_btn_green {
+  .have_question .chat .boxed_btn_green .boxed_btn_red{
     padding: 11px 50px;
     margin-right: 0;
   }
@@ -2065,7 +2081,7 @@ h3 {
 }
 
 /* line 33, C:/Users/SPN Graphics/Desktop/cl sep/HTML/scss/_support.scss */
-.dedicated_support .support_info .get_started .boxed_btn_green {
+.dedicated_support .support_info .get_started .boxed_btn_green .boxed_btn_red{
   margin-right: 20px;
   padding: 12px 45px;
 }
@@ -2719,7 +2735,7 @@ h3 {
 }
 
 /* line 194, C:/Users/SPN Graphics/Desktop/cl sep/HTML/scss/_gallery.scss */
-#test-form .boxed_btn_green {
+#test-form .boxed_btn_green .boxed_btn_red{
   width: 100%;
   height: 60px;
   -webkit-border-radius: 30px;
@@ -3555,7 +3571,7 @@ h3 {
 }
 
 /* line 148, C:/Users/SPN Graphics/Desktop/cl sep/HTML/scss/_bradcam.scss */
-.popup_box .boxed_btn_green {
+.popup_box .boxed_btn_green .boxed_btn_red{
   width: 100%;
 }
 
@@ -3645,7 +3661,7 @@ h3 {
 
 /* line 224, C:/Users/SPN Graphics/Desktop/cl sep/HTML/scss/_bradcam.scss */
 #test-form,
-#test-form2 {
+#test-form2, #test-form3  {
   display: inline-block;
   margin: auto;
   text-align: center;

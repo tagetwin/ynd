@@ -14,8 +14,8 @@
                 <p>The Best Game Comparison Reputation In The Area</p>
                 <h3>Go Big with your next Domain</h3>
                 <div class="find_dowmain">
-                  <form action="search.html" class="find_dowmain_form">
-                    <input type="text" placeholder="Find your domain" />
+                  <form action="/yp/game?cmd=search" class="find_dowmain_form" method="post">
+                    <input name="gametitle" type="text" placeholder="Find your domain" />
                     <button type="submit">검색하기</button>
                   </form>
                 </div>

@@ -18,14 +18,14 @@
 						<article class="blog_item">
 							<div class="blog_item_img">
 								<img class="card-img rounded-0" src="img/blog/single_blog_1.png" alt=""> <a href="#" class="blog_item_date">
-									<h3><fmt:formatDate value="${board.boardcreateTime}" pattern="dd"/></h3>
+									<h3><fmt:formatDate value="${board.boardCreateTime}" pattern="dd"/></h3>
 									<p>Jan</p>
 								</a>
 							</div>
 
 							<div class="blog_details">
-								<a class="d-inline-block" href="single-blog.html">
-									<h3>${board.boardtitle}</h3>
+								<a class="d-inline-block" href="/yp/board?cmd=detail&id=${board.id}">
+									<h3>${board.boardTitle}</h3>
 								</a>
 								<p>
 								<h2>${board.content}</h2>

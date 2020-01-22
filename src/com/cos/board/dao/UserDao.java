@@ -88,7 +88,7 @@ public class UserDao {
 		return -1;
 	}
 
-	public int delete() {
+	public int delete(int id) {
 		// 1. Stream 연결
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
@@ -97,7 +97,7 @@ public class UserDao {
 			final String SQL = "DELETE FROM user WHERE id = ?";
 			pstmt = conn.prepareStatement(SQL);
 			// 3. SQL문 완성하기
-			pstmt.setInt(1, 2);
+			pstmt.setInt(1, id);
 			
 			// 4. SQL문 전송하기
 			//pstmt.executeQuery();
@@ -137,6 +137,7 @@ public class UserDao {
 				int id = rs.getInt("id");
 				String username = rs.getString("username");
 				String email = rs.getString("email");
+				String address = rs.getString("address");
 				Timestamp createTime = rs.getTimestamp("createTime");
 				
 				// User Builder
@@ -145,7 +146,7 @@ public class UserDao {
 						.username(username)
 						.email(email)
 						.createTime(createTime)
-						.address("부산")
+						.address(address)
 						.build();
 				
 				users.add(user);

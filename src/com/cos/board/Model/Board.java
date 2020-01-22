@@ -15,10 +15,10 @@ import lombok.NoArgsConstructor;
 
 public class Board {
 	private int id;
-	private String boardtitle;
+	private String boardTitle;
 	private String content;
 	private int userId;
-	private Timestamp boardcreateTime;
+	private Timestamp boardCreateTime;
 	
 //	public String getBoardtitle() {
 //		boardtitle = boardtitle.replaceAll("<", "&lt;");

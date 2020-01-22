@@ -17,17 +17,20 @@ public class UserProfileProcAction implements Action {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		if(req.getParameter("password") == null ||
-				req.getParameter("email") == null ||
-				req.getParameter("address") == null ||
-				req.getParameter("password").equals("") ||
-				req.getParameter("email").equals("") ||
-				req.getParameter("address").equals("")) {
+		if(
+			req.getParameter("password") == null ||
+			req.getParameter("password").equals("")) {
 			Script.back(resp, "잘못된 접근입니다.");
 			return;
 		}
 		
-		User user = (User) req.getSession().getAttribute("user");
+//			req.getParameter("email") == null ||
+//					req.getParameter("address") == null ||
+//				req.getParameter("email").equals("") ||
+//				req.getParameter("address").equals("")) {
+			
+		
+		User user = (User) req.getSession().getAttribute("principal");
 		int id = user.getId();
 		String password = req.getParameter("password");
 		String email = req.getParameter("email");
@@ -43,7 +46,7 @@ public class UserProfileProcAction implements Action {
 			HttpSession session = req.getSession();
 			session.setAttribute("user", principal);
 			
-			Script.href(resp, "회원정보 수정 완료", "/user?cmd=profile");
+			Script.href(resp, "회원정보 수정 완료", "/yp/");
 		} else {
 			Script.back(resp, "회원정보 수정에 실패하였습니다.");
 		}

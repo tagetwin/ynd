@@ -21,13 +21,12 @@ public class BoardListAction implements Action{
 		BoardDao boardDao = BoardDao.getInstance();
 		List<Board> boards = boardDao.findAll();
 
-		System.out.println(boards);
 		
 		//<request에 List<Board>담기>
 		req.setAttribute("boards", boards);
 		
 		// 3번. X -> list.jsp 이동
-		RequestDispatcher dis = req.getRequestDispatcher("/blog/list.jsp");
+		RequestDispatcher dis = req.getRequestDispatcher("/board/list.jsp");
 		dis.forward(req, resp);
 	}
 }

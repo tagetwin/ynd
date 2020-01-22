@@ -117,6 +117,35 @@ public class BoardDao {
 		}
 		return -1;
 	}
+	
+	public int deleteAll(int id) {
+		// 1. Stream 연결
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement pstmt = null;
+		try {
+			// 2. 쿼리 전송 클래스 (규약에 맞게)
+			final String SQL = "DELETE FROM board WHERE userId = ?";
+			pstmt = conn.prepareStatement(SQL);
+			// 3. SQL문 완성하기
+			pstmt.setInt(1, id);
+
+			// 4. SQL문 전송하기
+			// pstmt.executeQuery();
+			int result = pstmt.executeUpdate();
+
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return -1;
+	}
 
 	public List<Board> findAll() {
 		// 0. 컬렉션 만들기
@@ -136,17 +165,17 @@ public class BoardDao {
 
 			while (rs.next()) {
 				int id = rs.getInt("id");
-				String boardtitle = rs.getString("boardtitle");
+				String boardTitle = rs.getString("boardTitle");
 				String content = rs.getString("content");
 				int userId = rs.getInt("userId");
-				Timestamp boardcreateTime = rs.getTimestamp("boardcreateTime");
+				Timestamp boardCreateTime = rs.getTimestamp("boardCreateTime");
 				
 				Board board = Board.builder()
 						.id(id)
-						.boardtitle(boardtitle)
+						.boardTitle(boardTitle)
 						.content(content)
 						.userId(userId)
-						.boardcreateTime(boardcreateTime)
+						.boardCreateTime(boardCreateTime)
 						.build();
 				
 				boards.add(board);
@@ -175,7 +204,7 @@ public class BoardDao {
 		ResultSet rs = null;
 		try {
 			StringBuffer sb = new StringBuffer();
-			sb.append("SELECT b.id, b.boardtitle, b.content, b.boardcreateTime, b.userId, u.username");
+			sb.append("SELECT b.id, b.boardTitle, b.content, b.boardCreateTime, b.userId, u.username");
 			sb.append(" FROM board b inner join user u");
 			sb.append(" ON b.userid = u.id");
 			sb.append(" WHERE b.id =?"); // 세미콜론 절대 금지, 끝에 띄어쓰기
@@ -190,19 +219,19 @@ public class BoardDao {
 
 			BoardUserVM buVM = null;
 			if (rs.next()) {
-				String boardtitle = rs.getString("b.boardtitle");
+				String boardTitle = rs.getString("b.boardTitle");
 				String content = rs.getString("b.content");
-				Timestamp boardcreateTime = rs.getTimestamp("b.boardcreateTime");
+				Timestamp boardCreateTime = rs.getTimestamp("b.boardCreateTime");
 				int userId = rs.getInt("b.userId");
 				String username = rs.getString("u.username");
 
 				// Board Builder
 				Board board = Board.builder()
 						.id(id)
-						.boardtitle(boardtitle)
+						.boardTitle(boardTitle)
 						.content(content)
 						.userId(userId)
-						.boardcreateTime(boardcreateTime)
+						.boardCreateTime(boardCreateTime)
 						.build();
 
 				// User Builder
