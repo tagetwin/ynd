@@ -9,7 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor      // 전체 생성자
-@NoArgsConstructor   // 빈 생성자
+@NoArgsConstructor  // 빈 생성자
 @Builder
 @Getter
 

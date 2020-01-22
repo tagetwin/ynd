@@ -32,12 +32,6 @@
 						<p class="excert">${buVM.board.content}</p>
 					</div>
 				</div>
-				<form action="">
-				<input type="hidden" name>
-				
-				</form>
-				
-				
 				<div class="navigation-top">
 					<div class="d-sm-flex justify-content-between text-center">
 						<p class="like-info">

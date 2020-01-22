@@ -14,10 +14,12 @@
 			<div class="card my-5">
 				<h5 class="card-header">Post</h5>
 				<div class="card-body">
-					<form action="/yp/board?cmd=writeProc" method="post">
+					<form action="/yp/board?cmd=updateProc" method="post">
+						<input type="hidden" name="id" value="${buVM.board.id}" />
+						<input type="hidden" name="userId" value="${buVM.board.userId}" />
 						<div class="form-group">
 							<label for="title">Title</label>
-							<input type="text" class="form-control" required="required" name="title" value="${buVM.board.boardTitle}"/>
+							<input type="text" class="form-control" required="required" name="boardTitle" value="${buVM.board.boardTitle}"/>
 						</div>
 						<div class="form-group">
 							<label for="content">Content </label>

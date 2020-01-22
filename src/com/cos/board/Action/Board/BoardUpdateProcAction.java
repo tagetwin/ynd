@@ -21,29 +21,29 @@ public class BoardUpdateProcAction implements Action {
 		(
 				req.getParameter("userId") == null ||
 				req.getParameter("id") == null ||
-				req.getParameter("title") == null ||
+				req.getParameter("boardTitle") == null ||
 				req.getParameter("content") == null ||
 				req.getParameter("userId").equals("") ||
 				req.getParameter("id").equals("") ||
-				req.getParameter("title").equals("") ||
+				req.getParameter("boardTitle").equals("") ||
 				req.getParameter("content").equals("")
 		) {
 			Script.back(resp, "proc잘못된 접근입니다.");
 			return; // 두번이동하게되면 에러 forward
 		}
 		System.out.println(req.getParameter("id"));
-		System.out.println(req.getParameter("title"));
+		System.out.println(req.getParameter("boardTitle"));
 		System.out.println(req.getParameter("content"));
 		
 		int id = Integer.parseInt(req.getParameter("id"));
 		int userId = Integer.parseInt(req.getParameter("userId"));
-		String title = req.getParameter("title");
+		String boardTitle = req.getParameter("boardTitle");
 		String content = req.getParameter("content");
-		User principal = (User) req.getSession().getAttribute("user");
+		User principal = (User) req.getSession().getAttribute("principal");
 		
-		System.out.println("title: "+title);
+		System.out.println("title: "+boardTitle);
 		System.out.println("content: "+content);
-		System.out.println("principa.getId(): "+principal.getId());
+		System.out.println("principal.getId(): "+principal.getId());
 		
 		// 권한 검증!!
 		if(userId != principal.getId()) {
@@ -53,7 +53,7 @@ public class BoardUpdateProcAction implements Action {
 		
 		// DAO 연결해서 update 수정하기
 		BoardDao boardDao = BoardDao.getInstance();
-		int result = boardDao.update(title, content, id);
+		int result = boardDao.update(boardTitle, content, id);
 		
 		
 		// update 가 정상("board?cmd=detail&id=변수id이면 혹은 비정상이면
