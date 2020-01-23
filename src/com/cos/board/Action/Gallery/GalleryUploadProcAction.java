@@ -3,14 +3,13 @@ package com.cos.board.Action.Gallery;
 import java.io.File;
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.cos.board.Action.Action;
 import com.cos.board.dao.GalleryDao;
+import com.cos.board.util.ImageUtil;
 import com.cos.board.util.Script;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -40,16 +39,24 @@ public class GalleryUploadProcAction implements Action {
 			len = (int) f.length();
 		}
 
+//		File f2 = new File(uploadPath+"/"+fileName);
+//		int orientation = ImageUtil.getOrientation(f2);
+//		int degree = ImageUtil.getDegreeForOrientation(orientation);
+
+		
 		int userId = Integer.parseInt(multi.getParameter("userId"));
 		String psubject = multi.getParameter("psubject");
 		
 		GalleryDao gallerydao = GalleryDao.getInstance();
 		int result = gallerydao.upload(fileName, original, type, len, userId, psubject);
+		
 
+		
 		if(result == 1) {
 			System.out.println("파일 업로드 성공");
-			RequestDispatcher dis = req.getRequestDispatcher("/gallery?cmd=listProc");
-			dis.forward(req, resp);	
+//			RequestDispatcher dis = req.getRequestDispatcher("/gallery?cmd=listProc");
+//			dis.forward(req, resp);	
+			resp.sendRedirect("/yp/gallery?cmd=listProc");
 		}else {
 			Script.back(resp, "파일업로드 실패");
 		}

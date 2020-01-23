@@ -20,5 +20,6 @@ public class Gallery {
 	private int len;
 	private int userId;
 	private String psubject;
+//	private int degree;
 	private Timestamp pCreateTime;
 }

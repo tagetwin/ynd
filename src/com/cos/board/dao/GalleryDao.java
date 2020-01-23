@@ -41,6 +41,7 @@ public class GalleryDao {
 			pstmt.setInt(4, len);
 			pstmt.setInt(5, userId);
 			pstmt.setString(6, psubject);
+//			pstmt.setInt(7, degree);
 			// 4. SQL문 전송하기
 			// pstmt.executeQuery();
 			int result = pstmt.executeUpdate();
@@ -70,7 +71,7 @@ public class GalleryDao {
 		ResultSet rs = null;
 		try {
 			// 2. 쿼리 전송 클래스 (규약에 맞게)
-			final String SQL = "SELECT pid, filename FROM gallery ORDER BY pid DESC";
+			final String SQL = "SELECT * FROM gallery ORDER BY pid DESC";
 			pstmt = conn.prepareStatement(SQL);
 			// 3. SQL문 완성하기
 			// 4. SQL문 전송하기
@@ -78,11 +79,22 @@ public class GalleryDao {
 
 			while (rs.next()) {
 				int pid = rs.getInt("pid");
-				String fileName= rs.getString("fileName");
-				
+				String fileName = rs.getString("fileName");
+				String original = rs.getString("original");
+				String type = rs.getString("type");
+				int len = rs.getInt("len");
+				int userId = rs.getInt("userId");
+				String psubject = rs.getString("psubject");
+				Timestamp pCreateTime = rs.getTimestamp("pCreateTime");
 				Gallery gallery = Gallery.builder()
 						.pid(pid)
 						.fileName(fileName)
+						.original(original)
+						.type(type)
+						.len(len)
+						.userId(userId)
+						.psubject(psubject)
+						.pCreateTime(pCreateTime)
 						.build();
 				
 				gallerys.add(gallery);
@@ -103,4 +115,63 @@ public class GalleryDao {
 		}
 		return null;
 	}
+	
+	public int delete(int pid) {
+		// 1. Stream 연결
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement pstmt = null;
+		try {
+			// 2. 쿼리 전송 클래스 (규약에 맞게)
+			final String SQL = "DELETE FROM gallery WHERE pid = ?";
+			pstmt = conn.prepareStatement(SQL);
+			// 3. SQL문 완성하기
+			pstmt.setInt(1, pid);
+
+			// 4. SQL문 전송하기
+			// pstmt.executeQuery();
+			int result = pstmt.executeUpdate();
+
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return -1;
+	}
+	
+	public int deleteAll(int id) {
+		// 1. Stream 연결
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement pstmt = null;
+		try {
+			// 2. 쿼리 전송 클래스 (규약에 맞게)
+			final String SQL = "DELETE FROM gallery WHERE userId = ?";
+			pstmt = conn.prepareStatement(SQL);
+			// 3. SQL문 완성하기
+			pstmt.setInt(1, id);
+
+			// 4. SQL문 전송하기
+			// pstmt.executeQuery();
+			int result = pstmt.executeUpdate();
+
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return -1;
+	}
+	
 }

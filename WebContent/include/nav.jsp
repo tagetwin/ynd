@@ -11,7 +11,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <!-- <link rel="manifest" href="site.webmanifest"> -->
-<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
 <!-- Place favicon.ico in the root directory -->
 
@@ -27,6 +26,7 @@
 <link rel="stylesheet" href="css/animate.css" />
 <link rel="stylesheet" href="css/slicknav.css" />
 <link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/imgutil.css" />
 
 </head>
 

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ page import = "com.cos.board.util.*" %>
 <%@ include file="/include/nav.jsp"%>
 <div class="bradcam_area breadcam_bg overlay2">
 	<h3>Gallery</h3>
@@ -17,18 +17,19 @@
 			
 			<div class="row gallery-item">
 			<c:forEach var="gallery" items="${gallerys}" varStatus="status">
-			
 				<div class="col-md-4">
-					<a href="/yp/upload/${gallery.fileName}" class="img-pop-up">
-						<div class="single-gallery-image" style="background: url(/yp/upload//${gallery.fileName});"></div>
-					</a>
-				</div>
+						<a href="/yp/upload/${gallery.fileName}" class="img-pop-up">
+							<div class="single-gallery-image" style="background: url(/yp/upload/${gallery.fileName});"></div>
+						</a>
+					</div>
 			
 			</c:forEach>
 			</div>
 		</div>
 	</div>
 </div>
+
+<!-- upload -->
 
 <div id="upload-form" class="white-popup-block mfp-hide">
 	<div class="popup_box ">
@@ -57,7 +58,7 @@
 					</div>
 
 					<div class="col-xl-12">
-						<button type="submit" class="boxed_btn_green">Sign in</button>
+						<button type="submit" class="boxed_btn_green">Upload</button>
 					</div>
 				</div>
 			</form>

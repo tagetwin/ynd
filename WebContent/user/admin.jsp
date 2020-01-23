@@ -79,22 +79,24 @@
 				<div class="progress-table">
 					<div class="table-head">
 						<div class="serial">#</div>
-						<div class="country">Username</div>
-						<div class="visit">Email</div>
-						<div class="percentage">Address</div>
+						<div class="country">Title</div>
+						<div class="visit">Username</div>
+						<div class="percentage">Filename</div>
+						<div class="percentage">CreateTime</div>
 					</div>
+					<c:forEach var="gallery" items="${gallerys}" varStatus="status">
 					<div class="table-row">
-						<div class="serial">01</div>
-						<div class="country">
-							<img src="img/elements/f1.jpg" alt="flag">Canada
+						<div class="serial">${gallery.pid}</div>
+						<div class="country">${gallery.psubject}</div>
+						<div class="visit">${gallery.userId}</div>
+						<div class="percentage">${gallery.fileName}</div>
+						<div class="percentage">${gallery.PCreateTime}</div>
+							<form action="/yp/gallery?cmd=delete" method="post">
+								<input type="hidden" name="pid" value="${gallery.pid}" />
+								<button type="submit" class="genric-btn danger-border circle arrow">삭제</button>
+							</form>
 						</div>
-						<div class="visit">645032</div>
-						<div class="percentage">
-							<div class="progress">
-								<div class="progress-bar color-1" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-							</div>
-						</div>
-					</div>
+					</c:forEach>
 				</div>
 			</div>
 		</div>

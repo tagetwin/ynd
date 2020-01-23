@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import com.cos.board.Action.Action;
 import com.cos.board.Model.User;
 import com.cos.board.dao.BoardDao;
+import com.cos.board.dao.GalleryDao;
 import com.cos.board.dao.UserDao;
 import com.cos.board.util.Script;
 
@@ -30,31 +31,31 @@ public class UserdeleteAction implements Action {
 				return;
 			}
 		}
-
-		UserDao userDao = UserDao.getInstance();
+		
+		
+		GalleryDao galleryDao = GalleryDao.getInstance();
+		int result = galleryDao.deleteAll(id);
+		System.out.println(result + "이미지 삭제성공");
+		
 
 		BoardDao boardDao = BoardDao.getInstance();
 		int result2 = boardDao.deleteAll(id);
 		System.out.println(result2 + "작성글 삭제성공");
+
+		UserDao userDao = UserDao.getInstance();
+		int result3 = userDao.delete(id);
+		System.out.println(result3 + "아이디 삭제성공");
 		
-		int result = userDao.delete(id);
-		System.out.println(result + "아이디 삭제성공");
-		
-		
-		RequestDispatcher dis;
-		
-		if (result == 1 && result2 == 1) {
+		if (result3 == 1) {
 			if(!user.getUsername().equals("admin")) {
 				HttpSession session = req.getSession();
 				session.invalidate();
 				
-				dis = req.getRequestDispatcher("/");
-				dis.forward(req, resp);
-				
+				resp.sendRedirect("/");
 				return;
+				
 			} else
-			dis = req.getRequestDispatcher("/user?cmd=admin");
-			dis.forward(req, resp);
+				resp.sendRedirect("/user?cmd=admin");
 
 		} else {
 			Script.back(resp, "삭제 실패하였습니다.");

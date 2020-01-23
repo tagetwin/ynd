@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cos.board.Action.Action;
 import com.cos.board.Model.Board;
+import com.cos.board.Model.Gallery;
 import com.cos.board.Model.User;
 import com.cos.board.dao.BoardDao;
+import com.cos.board.dao.GalleryDao;
 import com.cos.board.dao.UserDao;
 import com.cos.board.util.Script;
 
@@ -35,9 +37,12 @@ public class UserAdminAction implements Action {
 		BoardDao boarddao = BoardDao.getInstance();
 		List<Board> boards = boarddao.findAll();
 		
+		GalleryDao galleryDao = GalleryDao.getInstance();
+		List<Gallery> gallerys = galleryDao.findAll();
 		
 		req.setAttribute("users", users);
 		req.setAttribute("boards", boards);
+		req.setAttribute("gallerys", gallerys);
 		
 		RequestDispatcher dis = req.getRequestDispatcher("/user/admin.jsp");
 		dis.forward(req, resp);
