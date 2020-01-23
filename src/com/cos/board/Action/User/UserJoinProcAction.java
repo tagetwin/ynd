@@ -51,8 +51,11 @@ public class UserJoinProcAction implements Action {
 		
 		if (result == 1) {
 			System.out.println("가입성공");
-			RequestDispatcher dis = req.getRequestDispatcher("/");
-			dis.forward(req, resp);
+			
+			resp.sendRedirect("/yp/");
+			
+//			RequestDispatcher dis = req.getRequestDispatcher("/");
+//			dis.forward(req, resp);
 			
 		} else {
 			Script.back(resp, "회원가입 실패");

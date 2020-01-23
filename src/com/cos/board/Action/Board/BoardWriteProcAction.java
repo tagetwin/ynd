@@ -41,9 +41,12 @@ public class BoardWriteProcAction implements Action {
 		BoardDao boardDao = BoardDao.getInstance();
 		int result = boardDao.save(title, content, user.getId());
 		
+		
 		if(result == 1) {
-			RequestDispatcher dis = req.getRequestDispatcher("/");
-			dis.forward(req, resp);
+//			RequestDispatcher dis = req.getRequestDispatcher("/board?cmd=list");
+//			dis.forward(req, resp);
+			resp.sendRedirect("/yp/board?cmd=list");
+//			resp.sendRedirect("/yp/board?cmd=detail&id="+id);
 		}else {
 			Script.back(resp, "글 입력시 오류가 발생하였습니다.");
 		}

@@ -58,8 +58,9 @@ public class BoardUpdateProcAction implements Action {
 		
 		// update 가 정상("board?cmd=detail&id=변수id이면 혹은 비정상이면
 		if(result == 1) {
-			RequestDispatcher dis = req.getRequestDispatcher("/board?cmd=detail&id="+id);
-			dis.forward(req, resp);
+			resp.sendRedirect("/yp/board?cmd=detail&id="+id);
+//			RequestDispatcher dis = req.getRequestDispatcher("/board?cmd=detail&id="+id);
+//			dis.forward(req, resp);
 			System.out.println("수정 성공");
 		}else {
 			Script.back(resp, "글 수정이 실패했습니다.");

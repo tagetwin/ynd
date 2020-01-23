@@ -9,6 +9,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.SendResult;
 
 import com.cos.board.Action.Action;
 import com.cos.board.Model.User;
@@ -69,8 +70,11 @@ public class UserLoginProcAction implements Action {
 			HttpSession session = req.getSession();
 			// session 변수명은 user > principal
 			session.setAttribute("principal", user);
-			RequestDispatcher dis = req.getRequestDispatcher("/");
-			dis.forward(req, resp);
+
+			resp.sendRedirect("/yp/");
+			
+//			RequestDispatcher dis = req.getRequestDispatcher("/");
+//			dis.forward(req, resp);
 			
 		} else {
 			Script.back(resp, "로그인 실패");

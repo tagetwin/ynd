@@ -2724,18 +2724,27 @@ h3 {
 }
 
 /* line 184, C:/Users/SPN Graphics/Desktop/cl sep/HTML/scss/_gallery.scss */
-#test-form .white-popup-block .popup_inner .gj-datepicker span {
+#test-form .white-popup-block .popup_inner .gj-datepicker span,
+#test-form2 .white-popup-block .popup_inner .gj-datepicker span,
+#test-form3 .white-popup-block .popup_inner .gj-datepicker span,
+#upload-form .white-popup-block .popup_inner .gj-datepicker span {
   color: red;
 }
 
 /* line 189, C:/Users/SPN Graphics/Desktop/cl sep/HTML/scss/_gallery.scss */
-#test-form .white-popup-block input {
+#test-form .white-popup-block input,
+#test-form2 .white-popup-block input,
+#test-form3 .white-popup-block input,
+#upload-form .white-popup-block input {
   width: 100%;
   height: 50px;
 }
 
 /* line 194, C:/Users/SPN Graphics/Desktop/cl sep/HTML/scss/_gallery.scss */
-#test-form .boxed_btn_green .boxed_btn_red{
+#test-form .boxed_btn_green .boxed_btn_red,
+#test-form2 .boxed_btn_green .boxed_btn_red,
+#test-form3 .boxed_btn_green .boxed_btn_red,
+#upload-form .boxed_btn_green .boxed_btn_red {
   width: 100%;
   height: 60px;
   -webkit-border-radius: 30px;
@@ -3661,7 +3670,7 @@ h3 {
 
 /* line 224, C:/Users/SPN Graphics/Desktop/cl sep/HTML/scss/_bradcam.scss */
 #test-form,
-#test-form2, #test-form3  {
+#test-form2, #test-form3, #upload-form  {
   display: inline-block;
   margin: auto;
   text-align: center;
@@ -3677,7 +3686,7 @@ h3 {
 @media (max-width: 767px) {
   /* line 224, C:/Users/SPN Graphics/Desktop/cl sep/HTML/scss/_bradcam.scss */
   #test-form,
-  #test-form2 {
+  #test-form2, #test-form3, #upload-form {
     top: 0;
     left: 0;
     width: 100%;
@@ -3691,21 +3700,27 @@ h3 {
 
 /* line 239, C:/Users/SPN Graphics/Desktop/cl sep/HTML/scss/_bradcam.scss */
 #test-form .mfp-close-btn-in .mfp-close,
-#test-form2 .mfp-close-btn-in .mfp-close {
+#test-form2 .mfp-close-btn-in .mfp-close,
+#test-form3 .mfp-close-btn-in .mfp-close,
+#upload-form .mfp-close-btn-in .mfp-close{
   color: #333;
   display: none !important;
 }
 
 /* line 244, C:/Users/SPN Graphics/Desktop/cl sep/HTML/scss/_bradcam.scss */
 #test-form button.mfp-close,
-#test-form2 button.mfp-close {
+#test-form2 button.mfp-close
+#test-form3 button.mfp-close
+#upload-form button.mfp-close {
   display: none !important;
 }
 
 @media (max-width: 767px) {
   /* line 244, C:/Users/SPN Graphics/Desktop/cl sep/HTML/scss/_bradcam.scss */
   #test-form button.mfp-close,
-  #test-form2 button.mfp-close {
+  #test-form2 button.mfp-close,
+  #test-form3 button.mfp-close,
+  #upload-form button.mfp-close {
     display: block !important;
     position: absolute;
     left: 0;
@@ -3716,7 +3731,9 @@ h3 {
 
 /* line 255, C:/Users/SPN Graphics/Desktop/cl sep/HTML/scss/_bradcam.scss */
 #test-form button.mfp-close,
-#test-form2 button.mfp-close {
+#test-form2 button.mfp-close,
+#test-form3 button.mfp-close,
+#upload-form button.mfp-close {
   overflow: visible;
   cursor: pointer;
   background: transparent;

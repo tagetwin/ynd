@@ -49,7 +49,7 @@
 									<ul id="navigation">
 										<li><a href="/yp/">home</a></li>
 										<li><a href="/yp/board?cmd=list">blog</a></li>
-										<li><a href="/yp/board?cmd=gallerylist">Gallery</a></li>
+										<li><a href="/yp/gallery?cmd=listProc">Gallery</a></li>
 										<c:choose>
 											<c:when test="${not empty sessionScope.principal}">
 												<li><a href="/yp/board?cmd=write">Post</a></li>

@@ -42,8 +42,9 @@ public class BoardDeleteAction implements Action {
 		
 		if(result==1) {
 			if(!user.getUsername().equals("admin")) {
-				RequestDispatcher dis = req.getRequestDispatcher("/board/list.jsp");
-				dis.forward(req, resp);
+				resp.sendRedirect("/yp/board?cmd=list");
+//				RequestDispatcher dis = req.getRequestDispatcher("/board/list.jsp");
+//				dis.forward(req, resp);
 				return;
 			}
 			RequestDispatcher dis = req.getRequestDispatcher("/user?cmd=admin");

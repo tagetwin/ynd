@@ -1,27 +1,18 @@
-package com.cos.board.Action.User;
+package com.cos.board.Action.Gallery;
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import com.cos.board.Action.Action;
 
-public class UserLogoutAction implements Action{
+public class GalleryListAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-			HttpSession session = req.getSession();
-			session.invalidate();
-			
-			resp.sendRedirect("/yp/");
-			
-//			RequestDispatcher dis = req.getRequestDispatcher("/");
-//			dis.forward(req, resp);
+		 RequestDispatcher dis = req.getRequestDispatcher("/gallery/list.jsp");
+		 dis.forward(req, resp);
 	}
-
 }

@@ -22,8 +22,6 @@ public class BoardFactory {
 			return new BoardUpdateProcAction();
 		}else if (cmd.equals("search")) {
 			return new BoardSearchAction();
-		}else if (cmd.equals("gallerylist")){
-			return new BoardGalleryListAction();
 		}
 		return null;	
 	}
