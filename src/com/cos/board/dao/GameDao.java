@@ -148,7 +148,7 @@ public class GameDao {
 		return -1;
 	}
 
-	public List<Game> findAll() {
+	public List<Game> findAll(String gameTitle) {
 		// 0. 컬렉션 만들기
 		List<Game> games = new ArrayList<>();
 
@@ -158,7 +158,7 @@ public class GameDao {
 		ResultSet rs = null;
 		try {
 			// 2. 쿼리 전송 클래스 (규약에 맞게)
-			final String SQL = "SELECT * FROM game ORDER BY gid DESC";
+			final String SQL = "SELECT * FROM game WHERE gameTitle like %?% ORDER BY gid DESC";
 			pstmt = conn.prepareStatement(SQL);
 			// 3. SQL문 완성하기
 			// 4. SQL문 전송하기
@@ -166,7 +166,6 @@ public class GameDao {
 
 			while (rs.next()) {
 				int gid = rs.getInt("gid");
-				String gameTitle = rs.getString("gameTitle");
 				String gameContent = rs.getString("gameContent");
 				String genre = rs.getString("genre");
 				String publisher = rs.getString("publisher");
