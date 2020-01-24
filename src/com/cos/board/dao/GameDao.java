@@ -9,10 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.cos.board.DB.DBUtil;
-import com.cos.board.Model.Board;
 import com.cos.board.Model.Game;
-import com.cos.board.Model.User;
-import com.cos.board.viewmodel.BoardUserVM;
 
 // User Test
 public class GameDao {
@@ -158,21 +155,25 @@ public class GameDao {
 		ResultSet rs = null;
 		try {
 			// 2. 쿼리 전송 클래스 (규약에 맞게)
-			final String SQL = "SELECT * FROM game WHERE gameTitle like %?% ORDER BY gid DESC";
+			final String SQL = "SELECT * FROM game WHERE gameTitle like '%"+gameTitle+"%' ORDER BY gid DESC";
+			System.out.println(SQL);
 			pstmt = conn.prepareStatement(SQL);
 			// 3. SQL문 완성하기
+//			pstmt.setString(1, gameTitle);
 			// 4. SQL문 전송하기
 			rs = pstmt.executeQuery();
-
+			
 			while (rs.next()) {
 				int gid = rs.getInt("gid");
+				gameTitle =rs.getString("gameTitle"); 
 				String gameContent = rs.getString("gameContent");
 				String genre = rs.getString("genre");
 				String publisher = rs.getString("publisher");
 				Timestamp publishDate = rs.getTimestamp("publishDate");
 				int userId = rs.getInt("userId");
-				int sPrice = rs.getInt("sPrice");
-				int dPrice = rs.getInt("dPrice");
+				int steamPrice = rs.getInt("steamPrice");
+				int directPrice = rs.getInt("directPrice");
+				int recommendation = rs.getInt("recommendation");
 				
 				Game game = Game.builder()
 						.gid(gid)
@@ -182,8 +183,9 @@ public class GameDao {
 						.publisher(publisher)
 						.publishDate(publishDate)
 						.userId(userId)
-						.sPrice(sPrice)
-						.dPrice(dPrice)
+						.steamPrice(steamPrice)
+						.directPrice(directPrice)
+						.recommendation(recommendation)
 						.build();
 				
 				games.add(game);
@@ -204,52 +206,51 @@ public class GameDao {
 		return null;
 	}
 
-	public BoardUserVM findById(int id) {
+	public Game findbyId(int gid) {
+		// 0. 컬렉션 만들기
+
 		// 1. Stream 연결
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			StringBuffer sb = new StringBuffer();
-			sb.append("SELECT b.id, b.boardTitle, b.content, b.boardCreateTime, b.userId, u.username");
-			sb.append(" FROM board b inner join user u");
-			sb.append(" ON b.userid = u.id");
-			sb.append(" WHERE b.id =?"); // 세미콜론 절대 금지, 끝에 띄어쓰기
-
 			// 2. 쿼리 전송 클래스 (규약에 맞게)
-			final String SQL = sb.toString();
+			final String SQL = "SELECT * FROM game WHERE gid = ?";
+			System.out.println(SQL);
 			pstmt = conn.prepareStatement(SQL);
 			// 3. SQL문 완성하기
-			pstmt.setInt(1, id);
+			pstmt.setInt(1, gid);
 			// 4. SQL문 전송하기
 			rs = pstmt.executeQuery();
-
-			BoardUserVM buVM = null;
-			if (rs.next()) {
-				String boardTitle = rs.getString("b.boardTitle");
-				String content = rs.getString("b.content");
-				Timestamp boardCreateTime = rs.getTimestamp("b.boardCreateTime");
-				int userId = rs.getInt("b.userId");
-				String username = rs.getString("u.username");
-
-				// Board Builder
-				Board board = Board.builder()
-						.id(id)
-						.boardTitle(boardTitle)
-						.content(content)
+			
+			while (rs.next()) {
+				String gameTitle =rs.getString("gameTitle"); 
+				String gameContent = rs.getString("gameContent");
+				String genre = rs.getString("genre");
+				String publisher = rs.getString("publisher");
+				Timestamp publishDate = rs.getTimestamp("publishDate");
+				int userId = rs.getInt("userId");
+				int steamPrice = rs.getInt("steamPrice");
+				int directPrice = rs.getInt("directPrice");
+				int recommendation = rs.getInt("recommendation");
+				
+				Game game = Game.builder()
+						.gid(gid)
+						.gameTitle(gameTitle)
+						.gameContent(gameContent)
+						.genre(genre)
+						.publisher(publisher)
+						.publishDate(publishDate)
 						.userId(userId)
-						.boardCreateTime(boardCreateTime)
+						.steamPrice(steamPrice)
+						.directPrice(directPrice)
+						.recommendation(recommendation)
 						.build();
 
-				// User Builder
-				User user = User.builder()
-						.id(userId)
-						.username(username)
-						.build();
-
-				buVM = new BoardUserVM(board, user);
+				return game;	
 			}
-			return buVM;
+
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

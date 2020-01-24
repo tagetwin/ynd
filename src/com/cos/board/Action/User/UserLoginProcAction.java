@@ -3,14 +3,11 @@ package com.cos.board.Action.User;
 import java.io.IOException;
 import java.util.Optional;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.SendResult;
-
 import com.cos.board.Action.Action;
 import com.cos.board.Model.User;
 import com.cos.board.dao.UserDao;

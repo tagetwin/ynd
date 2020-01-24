@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cos.board.Action.Action;
 import com.cos.board.dao.GalleryDao;
-import com.cos.board.util.ImageUtil;
 import com.cos.board.util.Script;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;

@@ -21,6 +21,7 @@ public class Game {
 	private String publisher;
 	private Timestamp publishDate;
 	private int userId;
-	private int sPrice;
-	private int dPrice;
+	private int steamPrice;
+	private int directPrice;
+	private int recommendation;
 }

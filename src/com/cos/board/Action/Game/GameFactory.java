@@ -5,7 +5,7 @@ import com.cos.board.Action.Action;
 public class GameFactory {
 
 	public static Action route (String cmd) {
-	System.out.println("GameFactory :" + cmd);
+//	System.out.println("GameFactory :" + cmd);
 		
 		if(cmd.equals("search")) {
 			return new GameSearchAction();

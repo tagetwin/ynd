@@ -15,7 +15,7 @@
                 <h3>Go Big with your next Game</h3>
                 <div class="find_dowmain">
                   <form action="/yp/game?cmd=search" class="find_dowmain_form" method="post">
-                    <input name="gametitle" type="text" placeholder="Find your game" />
+                    <input name="gameTitle" type="text" placeholder="Find your game" required="required"/>
                     <button type="submit">검색하기</button>
                   </form>
                 </div>

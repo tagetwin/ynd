@@ -26,7 +26,7 @@ public class GameController extends HttpServlet{
 		resp.setContentType("text/html; charset=utf-8");
 		
 		String cmd = req.getParameter("cmd");
-		System.out.println("GameController:"+cmd);
+//		System.out.println("GameController:"+cmd);
 		Action action = GameFactory.route(cmd);
 		action.execute(req, resp);
 		
