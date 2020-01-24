@@ -27,7 +27,7 @@
 						</div>
 						<div class="form-group float-right">
 							<button type="submit" class="btn btn-primary">Update</button>
-							<a href="/yp/" class="btn btn-default">Cancel</a>
+							<a href="/yp/board?cmd=list" class="btn btn-default">Cancel</a>
 <!-- 							<button class="btn btn-default">Cancel</button> -->
 						</div>
 					</form>

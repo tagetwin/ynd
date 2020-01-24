@@ -38,17 +38,17 @@ public class BoardDeleteAction implements Action {
 		BoardDao boardDao = BoardDao.getInstance();
 		
 		int result = boardDao.delete(id);
-		System.out.println("삭제성공");
+		
 		
 		if(result==1) {
 			if(!user.getUsername().equals("admin")) {
+				System.out.println("사용자글삭제성공");
 				resp.sendRedirect("/yp/board?cmd=list");
-//				RequestDispatcher dis = req.getRequestDispatcher("/board/list.jsp");
-//				dis.forward(req, resp);
 				return;
 			}
-			RequestDispatcher dis = req.getRequestDispatcher("/user?cmd=admin");
-			dis.forward(req, resp);
+			System.out.println("관리자글삭제성공");
+			resp.sendRedirect("/yp/user?cmd=admin");
+
 			
 		}else {
 			Script.back(resp, "삭제 실패하였습니다.");

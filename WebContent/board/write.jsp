@@ -8,30 +8,39 @@
 <!-- bradcam_area_end -->
 
 <!-- post -->
-<div class="container">
-	<div class="row">
-		<div class="col-md-12 col-md-offset-2">
-			<div class="card my-5">
-				<h5 class="card-header">Post</h5>
-				<div class="card-body">
-					<form action="/yp/board?cmd=writeProc" method="post">
-						<div class="form-group">
-							<label for="title">Title</label>
-							<input type="text" class="form-control" required="required" name="title" />
+<section class="contact-section">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="contact-title">Post</h2>
+			</div>
+			<div class="col-lg-12">
+				<form class="form-contact contact_form" action="/yp/board?cmd=writeProc" method="post" novalidate="novalidate">
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<input value="${sessionScope.principal.username}" class="form-control valid" name="username" id="username" type="text" readonly="readonly"/>
+							</div>
 						</div>
-						<div class="form-group">
-							<label for="content">Content </label>
-							<textarea rows="7" class="form-control" required="required" name="content" ></textarea>
+						<div class="col-12">
+							<div class="form-group">
+								<input class="form-control" name="boardTitle" id="boardTitle" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'" placeholder="Enter Title"/>
+							</div>
 						</div>
-						<div class="form-group float-right">
-							<button type="submit" class="btn btn-primary">Post</button>
-							<button class="btn btn-default">Cancel</button>
+						<div class="col-12">
+							<div class="form-group">
+								<textarea class="form-control w-100" name="content" id=summernote cols="30" rows="12" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder="Enter Content"></textarea>
+							</div>
 						</div>
-					</form>
-				</div>
+					</div>
+					<div class="form-group mt-3">
+						<button type="submit" class="button button-contactForm boxed-btn">Send</button>
+						<a href="/yp/board?cmd=list" class="button button-contactForm boxed-btn">Close</a>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
-</div>
+</section>
 
 <%@ include file="/include/footer.jsp"%>

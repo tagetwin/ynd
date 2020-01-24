@@ -17,8 +17,6 @@ public class UserFactory {
 			return new UserJoinProcAction();
 		}else if (cmd.equals("loginProc")) {
 			return new UserLoginProcAction();
-		}else if (cmd.equals("profile")) {
-			return new UserProfileAction();
 		}else if (cmd.equals("profileProc")) {
 			return new UserProfileProcAction();
 		}else if (cmd.equals("usernameCheck")) {

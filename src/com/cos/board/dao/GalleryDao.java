@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.cos.board.DB.DBUtil;
-import com.cos.board.Model.Board;
 import com.cos.board.Model.Gallery;
 
 // User Test

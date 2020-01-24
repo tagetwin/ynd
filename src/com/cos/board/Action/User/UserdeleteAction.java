@@ -48,14 +48,15 @@ public class UserdeleteAction implements Action {
 		
 		if (result3 == 1) {
 			if(!user.getUsername().equals("admin")) {
+				System.out.println("사용자탈퇴성공");
 				HttpSession session = req.getSession();
 				session.invalidate();
-				
-				resp.sendRedirect("/");
+				resp.sendRedirect("/yp/");
 				return;
 				
 			} else
-				resp.sendRedirect("/user?cmd=admin");
+				System.out.println("관리자아이디삭제성공");
+				resp.sendRedirect("/yp/user?cmd=admin");
 
 		} else {
 			Script.back(resp, "삭제 실패하였습니다.");

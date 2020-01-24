@@ -61,7 +61,7 @@ public class BoardUpdateProcAction implements Action {
 			resp.sendRedirect("/yp/board?cmd=detail&id="+id);
 //			RequestDispatcher dis = req.getRequestDispatcher("/board?cmd=detail&id="+id);
 //			dis.forward(req, resp);
-			System.out.println("수정 성공");
+			System.out.println("사용자 수정 성공");
 		}else {
 			Script.back(resp, "글 수정이 실패했습니다.");
 		}

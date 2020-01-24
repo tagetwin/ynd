@@ -42,9 +42,10 @@ public class UserProfileProcAction implements Action {
 		
 		if(result == 1) {
 			// 세션 업데이트
-			User principal = userDao.findById(id);
+			System.out.println("회원정보수정완료");
+			User users = userDao.findById(id);
 			HttpSession session = req.getSession();
-			session.setAttribute("user", principal);
+			session.setAttribute("principal", users);
 			
 			Script.href(resp, "회원정보 수정 완료", "/yp/");
 		} else {

@@ -14,6 +14,10 @@ public class GameSearchAction implements Action {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		String gameTitle = req.getParameter("gameTitle");
+		
+		
+			
 		
 		RequestDispatcher dis = req.getRequestDispatcher("/game/search.jsp");
 		dis.forward(req, resp);

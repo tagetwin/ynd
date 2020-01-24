@@ -54,9 +54,7 @@ public class GalleryUploadProcAction implements Action {
 		
 		if(result == 1) {
 			System.out.println("파일 업로드 성공");
-//			RequestDispatcher dis = req.getRequestDispatcher("/gallery?cmd=listProc");
-//			dis.forward(req, resp);	
-			resp.sendRedirect("/yp/gallery?cmd=listProc");
+			resp.sendRedirect("/yp/gallery?cmd=list");
 		}else {
 			Script.back(resp, "파일업로드 실패");
 		}

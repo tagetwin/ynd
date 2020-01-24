@@ -22,29 +22,39 @@ public class GalleryDeleteAction implements Action {
 
 		HttpSession session = req.getSession();
 		User user = (User)session.getAttribute("principal");
+		int pid = Integer.parseInt(req.getParameter("pid"));
+		int userId = Integer.parseInt(req.getParameter("userId"));
 		
-		if
-		(
-			req.getParameter("pid") == null ||
-			req.getParameter("pid").equals("") ||
-			!user.getUsername().equals("admin")
-		) {
-			Script.back(resp, "잘못된 접근입니다.");
-			return;
+		if( !user.getUsername().equals("admin") ) {
+			if
+			(
+				user == null ||
+				userId != user.getId() ||
+				req.getParameter("pid") == null ||
+				req.getParameter("pid").equals("")
+			) {
+				Script.back(resp, "잘못된 접근입니다.");
+				return;
+			}
 		}
 		
-		int pid = Integer.parseInt(req.getParameter("pid"));
 		
 		GalleryDao galleryDao = GalleryDao.getInstance();
 		int result = galleryDao.delete(pid);
 		
 		if(result == 1) {
-			resp.sendRedirect("/yp/user?cmd=admin");
+			if(!user.getUsername().equals("admin")) {
+				System.out.println("사용자이미지삭제성공");
+				resp.sendRedirect("/yp/gallery?cmd=list");
+				return;
+				
+			}else {
+				System.out.println("관리자이미지삭제성공");
+				resp.sendRedirect("/yp/user?cmd=admin");
+			}
+			
 		}else {
 			Script.back(resp, "이미지 삭제 실패");
 		}
-			
-		
-		
 	}
 }

@@ -8,12 +8,8 @@ public class GalleryFactory {
 	
 		if(cmd.equals("list") ||  cmd.equals("")) {
 			return new GalleryListAction();
-		}else if(cmd.equals("upload")) {
-			return new GalleryUploadAction();
 		}else if(cmd.equals("uploadProc")) {
 			return new GalleryUploadProcAction();
-		}else if(cmd.equals("listProc")) {
-			return new GalleryListProcAction();
 		}else if(cmd.equals("delete")) {
 			return new GalleryDeleteAction();
 		}

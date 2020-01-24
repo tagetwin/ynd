@@ -14,20 +14,30 @@
 					<a href="#upload-form" class="login popup-with-form genric-btn info circle arrow">Upload</a>
 				</c:when>
 			</c:choose>
-			
+
 			<div class="row gallery-item">
-			<c:forEach var="gallery" items="${gallerys}" varStatus="status">
-				<div class="col-md-4">
+				<c:forEach var="gallery" items="${gallerys}" varStatus="status">
+					<div class="col-md-4">
 						<a href="/yp/upload/${gallery.fileName}" class="img-pop-up">
 							<div class="single-gallery-image" style="background: url(/yp/upload/${gallery.fileName});"></div>
 						</a>
+						<c:choose>
+							<c:when test="${sessionScope.principal.id eq gallery.userId }">
+								<form action="/yp/gallery?cmd=delete" method="post">
+									<input type="hidden" name="pid" value="${gallery.pid}" /> <input type="hidden" name="userId" value="${gallery.userId}" />
+									<button type="submit" class="genric-btn primary-border small mt-2 float-right">삭제</button>
+								</form>
+							</c:when>
+						</c:choose>
 					</div>
-			
-			</c:forEach>
+				</c:forEach>
 			</div>
 		</div>
 	</div>
 </div>
+
+
+
 
 <!-- upload -->
 

@@ -67,12 +67,6 @@
 			</div>
 		</div>
 
-<!-- 		<form id="deleteForm" action="/yp/board?cmd=delete" method="POST"> -->
-<%-- 			<input type="hidden" name="id" value="${board.id}" /> --%>
-<%-- 			<input type="hidden" name="userId" value="${board.userId}" /> --%>
-
-<!-- 		</form> -->
-
 		<div class="section-top-border">
 			<h3 class="mb-30">갤러리 페이지</h3>
 			<div class="progress-table-wrap">
@@ -93,6 +87,7 @@
 						<div class="percentage">${gallery.PCreateTime}</div>
 							<form action="/yp/gallery?cmd=delete" method="post">
 								<input type="hidden" name="pid" value="${gallery.pid}" />
+								<input type="hidden" name="userId" value="${gallery.userId}" />
 								<button type="submit" class="genric-btn danger-border circle arrow">삭제</button>
 							</form>
 						</div>
