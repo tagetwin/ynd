@@ -29,6 +29,25 @@
 <link rel="stylesheet" href="css/imgutil.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.css">
 
+<style>
+table {
+	table-layout: fixed
+}
+
+td {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.truncate {
+	width: 250px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+</style>
+
 </head>
 
 <body>
@@ -49,6 +68,7 @@
 								<nav>
 									<ul id="navigation">
 										<li><a href="/yp/">home</a></li>
+										<li><a href="/yp/game?cmd=list">Game</a></li>
 										<li><a href="/yp/board?cmd=list">blog</a></li>
 										<li><a href="/yp/gallery?cmd=list">Gallery</a></li>
 										<c:choose>
@@ -61,6 +81,11 @@
 												<li><a href="#test-form" class="login popup-with-form">Login</a></li>
 												<li><a href="#test-form2" class="login popup-with-form">Join</a></li>
 											</c:otherwise>
+										</c:choose>
+										<c:choose>
+											<c:when test="${sessionScope.principal.username eq 'admin'}">
+												<li><a href="/yp/admin?cmd=user">Admin</a></li>
+											</c:when>
 										</c:choose>
 									</ul>
 								</nav>
@@ -81,18 +106,13 @@
 								</c:choose>
 								<c:choose>
 									<c:when test="${sessionScope.principal.username eq 'admin'}">
-										<a href="/yp/user?cmd=admin" class="genric-btn warning circle arrow" type="button"> <i class="flaticon-user"></i> <span>관리자</span>
+										<a href="/yp/admin?cmd=user" class="genric-btn warning circle arrow" type="button"> <i class="flaticon-user"></i> <span>관리자</span>
 										</a>
 									</c:when>
-									<c:otherwise>
-									</c:otherwise>
 								</c:choose>
 
 							</div>
 						</div>
-						<!-- 						<form id="adminForm" action="/yp/user?cmd=admin" method="POST"> -->
-						<%-- 							<input type="hidden" name="id" value="${buVM.board.id}" /> <input type="hidden" name="userId" value="${buVM.board.userId}" /> --%>
-						<!-- 						</form> -->
 						<div class="col-12">
 							<div class="mobile_menu d-block d-lg-none"></div>
 						</div>
@@ -110,7 +130,7 @@
 		<div class="popup_box ">
 			<div class="popup_inner">
 				<div class="logo text-center">
-					<a href="#"> <img src="img/form-logo.png" alt="" />
+					<a href="/yp/"> <img src="img/form-logo.png" alt="" />
 					</a>
 				</div>
 				<h3 class="text-center">Sign in</h3>
@@ -140,7 +160,7 @@
 		<div class="popup_box ">
 			<div class="popup_inner">
 				<div class="logo text-center">
-					<a href="#"> <img src="img/form-logo.png" alt="" />
+					<a href="/yp/"> <img src="img/form-logo.png" alt="" />
 					</a>
 				</div>
 				<h3 class="text-center">Resistration</h3>
@@ -168,7 +188,7 @@
 		<div class="popup_box ">
 			<div class="popup_inner">
 				<div class="logo text-center">
-					<a href="#"><img src="img/form-logo.png" alt="" /> </a>
+					<a href="/yp/"><img src="img/form-logo.png" alt="" /> </a>
 				</div>
 				<h3 class="text-center">Profile</h3>
 				<form action="/yp/user?cmd=profileProc" method="POST">
@@ -192,7 +212,7 @@
 				</form>
 				<div class="col-xl-12">
 					<form action="/yp/user?cmd=delete" method="post">
-					<input type="hidden" name="id" value="${sessionScope.principal.id}"/>
+						<input type="hidden" name="id" value="${sessionScope.principal.id}" />
 						<button type="submit" class="boxed_btn_red">탈퇴</button>
 					</form>
 				</div>

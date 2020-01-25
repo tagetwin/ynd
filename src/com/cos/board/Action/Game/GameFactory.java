@@ -13,6 +13,8 @@ public class GameFactory {
 			return new GameDetailAction();
 		}else if (cmd.equals("like")) {
 			return new GameLikeAction();
+		}else if (cmd.equals("list")) {
+			return new GameListAction();
 		}
 		return null;	
 	}

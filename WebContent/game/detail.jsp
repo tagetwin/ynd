@@ -25,6 +25,7 @@ p {
 					<p id="gamedetail">
 						<br>${games.gameContent}<br>
 					</p>
+					<hr>
 				</div>
 				<div class="col-md-4 mt-sm-20" id="gameinfo">
 					<p>장르 : ${games.genre}</p>

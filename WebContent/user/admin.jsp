@@ -10,7 +10,10 @@
 
 <div class="whole-wrap">
 	<div class="container box_1170">
-
+	<a class="genric-btn success-border large mt-3">User</a>
+	<a class="genric-btn primary-border large mt-3">Blog</a>
+	<a class="genric-btn info-border large mt-3">Gallery</a>
+	<a class="genric-btn danger-border large mt-3">Game</a>
 		<div class="section-top-border">
 			<h3 class="mb-30">회원정보 페이지</h3>
 			<div class="progress-table-wrap">

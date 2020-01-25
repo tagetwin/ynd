@@ -1,7 +1,6 @@
 package com.cos.board.Action.Game;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -37,11 +36,5 @@ public class GameDetailAction implements Action {
 			RequestDispatcher dis = req.getRequestDispatcher("/game/detail.jsp");
 			dis.forward(req, resp);
 		}
-		
-		
-		
-		
-		
 	}
-
 }

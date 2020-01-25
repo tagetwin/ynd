@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.cos.board.DB.DBUtil;
@@ -25,18 +25,24 @@ public class GameDao {
 		return instance;
 	}
 
-	public int save(String boardTitle, String content, int userId) {
+	public int save(String gameTitle, String gameContent, String genre, String publisher, int steamPrice, 
+			int directPrice, Date publishDate) {
 		// 1. Stream 연결
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
 		try {
 			// 2. 쿼리 전송 클래스 (규약에 맞게)
-			final String SQL = "INSERT INTO board (boardTitle, content, userId, boardCreateTime) VALUES (?, ?, ?, now())";
+			final String SQL = "INSERT INTO game (gameTitle, gameContent, genre, publisher, publishDate, steamPrice, directPrice, recommendation)"
+					+ " VALUES (?, ?, ?, ?, ?, ?, ?, 0)";
 			pstmt = conn.prepareStatement(SQL);
 			// 3. SQL문 완성하기
-			pstmt.setString(1, boardTitle);
-			pstmt.setString(2, content);
-			pstmt.setInt(3, userId);
+			pstmt.setString(1, gameTitle);
+			pstmt.setString(2, gameContent);
+			pstmt.setString(3, genre);
+			pstmt.setString(4, publisher);
+			pstmt.setDate(5, (java.sql.Date) publishDate);
+			pstmt.setInt(6, steamPrice);
+			pstmt.setInt(7, directPrice);
 			// 4. SQL문 전송하기
 			// pstmt.executeQuery();
 			int result = pstmt.executeUpdate();
@@ -169,8 +175,7 @@ public class GameDao {
 				String gameContent = rs.getString("gameContent");
 				String genre = rs.getString("genre");
 				String publisher = rs.getString("publisher");
-				Timestamp publishDate = rs.getTimestamp("publishDate");
-				int userId = rs.getInt("userId");
+				Date publishDate = rs.getDate("publishDate");
 				int steamPrice = rs.getInt("steamPrice");
 				int directPrice = rs.getInt("directPrice");
 				int recommendation = rs.getInt("recommendation");
@@ -181,8 +186,7 @@ public class GameDao {
 						.gameContent(gameContent)
 						.genre(genre)
 						.publisher(publisher)
-						.publishDate(publishDate)
-						.userId(userId)
+						.publishDate((java.sql.Date) publishDate)
 						.steamPrice(steamPrice)
 						.directPrice(directPrice)
 						.recommendation(recommendation)
@@ -228,8 +232,7 @@ public class GameDao {
 				String gameContent = rs.getString("gameContent");
 				String genre = rs.getString("genre");
 				String publisher = rs.getString("publisher");
-				Timestamp publishDate = rs.getTimestamp("publishDate");
-				int userId = rs.getInt("userId");
+				Date publishDate = rs.getDate("publishDate");
 				int steamPrice = rs.getInt("steamPrice");
 				int directPrice = rs.getInt("directPrice");
 				int recommendation = rs.getInt("recommendation");
@@ -240,8 +243,7 @@ public class GameDao {
 						.gameContent(gameContent)
 						.genre(genre)
 						.publisher(publisher)
-						.publishDate(publishDate)
-						.userId(userId)
+						.publishDate((java.sql.Date) publishDate)
 						.steamPrice(steamPrice)
 						.directPrice(directPrice)
 						.recommendation(recommendation)
@@ -251,6 +253,65 @@ public class GameDao {
 			}
 
 			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				rs.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+	
+	public List<Game> findAll() {
+		// 0. 컬렉션 만들기
+		List<Game> games = new ArrayList<>();
+
+		// 1. Stream 연결
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			// 2. 쿼리 전송 클래스 (규약에 맞게)
+			final String SQL = "SELECT * FROM game ORDER BY gid DESC";
+			System.out.println(SQL);
+			pstmt = conn.prepareStatement(SQL);
+			// 3. SQL문 완성하기
+//			pstmt.setString(1, gameTitle);
+			// 4. SQL문 전송하기
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				int gid = rs.getInt("gid");
+				String gameTitle =rs.getString("gameTitle"); 
+				String gameContent = rs.getString("gameContent");
+				String genre = rs.getString("genre");
+				String publisher = rs.getString("publisher");
+				Date publishDate = rs.getDate("publishDate");
+				int steamPrice = rs.getInt("steamPrice");
+				int directPrice = rs.getInt("directPrice");
+				int recommendation = rs.getInt("recommendation");
+				
+				Game game = Game.builder()
+						.gid(gid)
+						.gameTitle(gameTitle)
+						.gameContent(gameContent)
+						.genre(genre)
+						.publisher(publisher)
+						.publishDate((java.sql.Date) publishDate)
+						.steamPrice(steamPrice)
+						.directPrice(directPrice)
+						.recommendation(recommendation)
+						.build();
+				
+				games.add(game);
+			}
+
+			return games;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

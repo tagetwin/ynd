@@ -21,8 +21,6 @@ public class UserFactory {
 			return new UserProfileProcAction();
 		}else if (cmd.equals("usernameCheck")) {
 			return new UserNameCheckAction();
-		}else if (cmd.equals("admin")) {
-			return new UserAdminAction();
 		}else if (cmd.equals("delete")) {
 			return new UserdeleteAction();
 		}

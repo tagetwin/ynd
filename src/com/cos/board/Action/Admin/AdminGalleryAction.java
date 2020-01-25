@@ -1,4 +1,4 @@
-package com.cos.board.Action.User;
+package com.cos.board.Action.Admin;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,15 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.cos.board.Action.Action;
-import com.cos.board.Model.Board;
 import com.cos.board.Model.Gallery;
 import com.cos.board.Model.User;
-import com.cos.board.dao.BoardDao;
 import com.cos.board.dao.GalleryDao;
-import com.cos.board.dao.UserDao;
 import com.cos.board.util.Script;
 
-public class UserAdminAction implements Action {
+public class AdminGalleryAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,22 +26,13 @@ public class UserAdminAction implements Action {
 			Script.back(resp, "접근 권한이 없습니다.");
 			return;	
 		}
-		
-		
-		UserDao userdao = UserDao.getInstance();
-		List<User> users = userdao.findAll();
-		
-		BoardDao boarddao = BoardDao.getInstance();
-		List<Board> boards = boarddao.findAll();
-		
+				
 		GalleryDao galleryDao = GalleryDao.getInstance();
 		List<Gallery> gallerys = galleryDao.findAll();
-		
-		req.setAttribute("users", users);
-		req.setAttribute("boards", boards);
+				
 		req.setAttribute("gallerys", gallerys);
 		
-		RequestDispatcher dis = req.getRequestDispatcher("/user/admin.jsp");
+		RequestDispatcher dis = req.getRequestDispatcher("/admin/gallery.jsp");
 		dis.forward(req, resp);
 		
 	}

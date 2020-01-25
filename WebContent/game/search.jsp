@@ -35,7 +35,7 @@
 
 		<div class="row">
 			<c:forEach var="game" items="${games}" varStatus="status">
-				<div class="col-xl-12">
+				<div class="col-xl-12 mb-2">
 					<div class="single_search d-flex justify-content-between align-items-center">
 						<div class="name_title">
 							<h4>
@@ -44,9 +44,9 @@
 						</div>
 						<div class="prising_content">
 							<i class="far fa-thumbs-up"></i><a>${game.recommendation}</a> <a href="https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/" target="_blank">
-							<img src="/img/steam.png" width="100" alt=""></a>
+							<img src="img/game/steam.png" width="100" alt=""></a>
 							<a>${game.steamPrice}</a>
-							<a href="https://directg.net/game/game_page.html?product_code=50002056" target="_blank"><img src="/img/dg.png" width="100" alt=""></a>
+							<a href="https://directg.net/game/game_page.html?product_code=50002056" target="_blank"><img src="img/game/dg.png" width="100" alt=""></a>
 							<a>${game.directPrice}</a>
 						</div>
 					</div>
