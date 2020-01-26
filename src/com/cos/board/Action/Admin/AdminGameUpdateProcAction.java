@@ -12,7 +12,7 @@ import com.cos.board.Model.User;
 import com.cos.board.dao.GameDao;
 import com.cos.board.util.Script;
 
-public class AdminGameWriteProcAction implements Action {
+public class AdminGameUpdateProcAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -23,7 +23,7 @@ public class AdminGameWriteProcAction implements Action {
 			Script.back(resp, "접근 권한이 없습니다.");
 			return;	
 		}
-				
+		int gid = Integer.parseInt(req.getParameter("gid"));
 		String gameTitle = req.getParameter("gameTitle");
 		String gameContent = req.getParameter("gameContent");
 		String genre = req.getParameter("genre");
@@ -32,24 +32,16 @@ public class AdminGameWriteProcAction implements Action {
 		int directPrice = Integer.parseInt(req.getParameter("directPrice"));
 		
 		String date = req.getParameter("publishDate");
-		Date publishDate = Date.valueOf(date);
-		
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//		
-//		java.util.Date publishDate = null;
-//		try {
-//			publishDate = sdf.parse(date1);
-//		} catch (ParseException e) {
-//			e.printStackTrace();
-//		}
+		Date publishDate = Date.valueOf(date);	
 		
 		GameDao gameDao = GameDao.getInstance();
-		int result = gameDao.save(gameTitle, gameContent, genre, publisher, steamPrice, directPrice, publishDate);
+		int result = gameDao.update(gameTitle, gameContent, genre, publisher, steamPrice, directPrice, publishDate, gid);
+		
 		
 		if(result == 1) {
 			resp.sendRedirect("/yp/admin?cmd=game");
 		}else {
-			Script.back(resp, "게임등록에 실패했습니다.");
+			Script.back(resp, "게임정보 수정 실패");
 		}
 		
 		

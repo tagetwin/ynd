@@ -44,8 +44,8 @@
 					<td>${game.steamPrice}</td>
 					<td>${game.directPrice}</td>
 					<td>${game.recommendation}</td>
-					<td><a href="/yp/admin?cmd" class="genric-btn primary-border small px-3">수정</a></td>
-					<td><a href="/yp/admin?cmd" class="genric-btn primary-border small px-3">삭제</a></td>
+					<td><a href="/yp/admin?cmd=update&gid=${game.gid}" class="genric-btn primary-border small px-3">수정</a></td>
+					<td><a href="/yp/admin?cmd=delete&gid=${game.gid}" class="genric-btn primary-border small px-3">삭제</a></td>
 				</tr>
 			</c:forEach>
 

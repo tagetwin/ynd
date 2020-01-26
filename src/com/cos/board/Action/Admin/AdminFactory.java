@@ -18,6 +18,12 @@ public class AdminFactory {
 			return new AdminGameWriteAction();
 		}else if(cmd.equals("writeProc")) {
 			return new AdminGameWriteProcAction();
+		}else if(cmd.equals("update")) {
+			return new AdminGameUpdateAction();
+		}else if(cmd.equals("updateProc")) {
+			return new AdminGameUpdateProcAction();
+		}else if(cmd.equals("delete")) {
+			return new AdminGameDeleteAction();
 		}
 		return null;	
 	}

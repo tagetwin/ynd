@@ -15,49 +15,50 @@
 				<h2 class="contact-title">Game Post</h2>
 			</div>
 			<div class="col-lg-12">
-				<form class="form-contact contact_form" action="/yp/admin?cmd=writeProc" method="post" novalidate="novalidate">
+				<form class="form-contact contact_form" action="/yp/admin?cmd=updateProc" method="post" novalidate="novalidate">
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="form-group">
 							<label>Game Title</label>
-								<input class="form-control valid" name="gameTitle" id="gameTitle" type="text"/>
+								<input value="${games.gameTitle}" class="form-control valid" name="gameTitle" id="gameTitle" type="text"/>
+								<input value="${games.gid}" name="gid" type="hidden"/>
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
 							<label>Publisher</label>
-								<input class="form-control valid" name="publisher" id="publisher" type="text"/>
+								<input value="${games.publisher}" class="form-control valid" name="publisher" id="publisher" type="text"/>
 							</div>
 						</div>
 						<div class="col-sm-3">
 							<div class="form-group">
 							<label>genre</label>
-								<input class="form-control valid" name="genre" id="genre" type="text"/>
+								<input value="${games.genre}" class="form-control valid" name="genre" id="genre" type="text"/>
 							</div>
 						</div>
 						<div class="col-sm-3">
 							<div class="form-group">
 							<label>Publish Date</label>
-								<input class="form-control valid" name="publishDate" id="publishDate" type="text"/>
+								<input value="${games.publishDate}" class="form-control valid" name="publishDate" id="publishDate" type="text"/>
 							</div>
 						</div>
 						<div class="col-sm-3">
 							<div class="form-group">
 							<label>steamPrice</label>
-								<input class="form-control valid" name="steamPrice" id="steamPrice" type="text"/>
+								<input value="${games.steamPrice}" class="form-control valid" name="steamPrice" id="steamPrice" type="text"/>
 							</div>
 						</div>
 						<div class="col-sm-3">
 							<div class="form-group">
 							<label>directPrice</label>
-								<input class="form-control valid" name="directPrice" id="directPrice" type="text"/>
+								<input value="${games.directPrice}" class="form-control valid" name="directPrice" id="directPrice" type="text"/>
 							</div>
 						</div>
 						
 						<div class="col-12">
 							<div class="form-group">
 							<label>Content</label>
-								<textarea class="form-control w-100" name="gameContent" id=summernote cols="30" rows="15" placeholder="Enter Content"></textarea>
+								<textarea  class="form-control w-100" name="gameContent" id=summernote cols="30" rows="15" placeholder="Enter Content">${games.gameContent}</textarea>
 							</div>
 						</div>
 					</div>

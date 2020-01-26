@@ -62,19 +62,25 @@ public class GameDao {
 		return -1;
 	}
 
-	public int update(String boardTitle, String content, int id) {
+	public int update(String gameTitle, String gameContent, String genre, String publisher, int steamPrice, 
+			int directPrice, Date publishDate, int gid) {
 		// 1. Stream 연결
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
 		try {
 			// 2. 쿼리 전송 클래스 (규약에 맞게)
-			final String SQL = "UPDATE board SET boardTitle = ?, content = ? WHERE id = ?";
+			final String SQL = "UPDATE game SET gameTitle = ?, gameContent = ?, genre = ?, publisher = ?,"
+					+ " publishDate = ?, steamPrice = ?, directPrice = ?  WHERE gid = ?";
 			pstmt = conn.prepareStatement(SQL);
 			// 3. SQL문 완성하기
-			pstmt.setString(1, boardTitle);
-			pstmt.setString(2, content);
-			pstmt.setInt(3, id);
-
+			pstmt.setString(1, gameTitle);
+			pstmt.setString(2, gameContent);
+			pstmt.setString(3, genre);
+			pstmt.setString(4, publisher);
+			pstmt.setDate(5, (java.sql.Date) publishDate);
+			pstmt.setInt(6, steamPrice);
+			pstmt.setInt(7, directPrice);
+			pstmt.setInt(8, gid);
 			// 4. SQL문 전송하기
 			// pstmt.executeQuery();
 			int result = pstmt.executeUpdate();
@@ -93,16 +99,16 @@ public class GameDao {
 		return -1;
 	}
 
-	public int delete(int id) {
+	public int delete(int gid) {
 		// 1. Stream 연결
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
 		try {
 			// 2. 쿼리 전송 클래스 (규약에 맞게)
-			final String SQL = "DELETE FROM board WHERE id = ?";
+			final String SQL = "DELETE FROM game WHERE gid = ?";
 			pstmt = conn.prepareStatement(SQL);
 			// 3. SQL문 완성하기
-			pstmt.setInt(1, id);
+			pstmt.setInt(1, gid);
 
 			// 4. SQL문 전송하기
 			// pstmt.executeQuery();
