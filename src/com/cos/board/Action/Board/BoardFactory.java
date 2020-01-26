@@ -6,8 +6,8 @@ public class BoardFactory {
 
 	public static Action route (String cmd) {
 	
-		if(cmd.equals("list") ||  cmd.equals("")) {
-			return new BoardListAction();
+		if(cmd.equals("home") ||  cmd.equals("")) {
+			return new BoardHomeAction();
 		}else if(cmd.equals("delete")) {
 			return new BoardDeleteAction();
 		}else if (cmd.equals("detail")) {
@@ -22,6 +22,8 @@ public class BoardFactory {
 			return new BoardUpdateProcAction();
 		}else if (cmd.equals("search")) {
 			return new BoardSearchAction();
+		}else if (cmd.equals("list")) {
+			return new BoardListAction();
 		}
 		return null;	
 	}

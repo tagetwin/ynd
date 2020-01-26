@@ -105,13 +105,34 @@
 <script src="js/main.js"></script>
 
 <script>
-	$(document).ready(function() {
-		$('#summernote').summernote({
-			  placeholder: 'Enter Content',
-		        tabsize: 3,
-		        height: 200
+$(document).ready(function() {
+	$('#summernote').summernote({
+		  placeholder: 'Enter Content',
+	        tabsize: 3,
+	        height: 200
+	});
+
+
+	$(function() {
+		$("#alert-success").hide();
+		$("#alert-danger").hide();
+		$("input").keyup(function() {
+			var pwd1 = $("#pw1").val();
+			var pwd2 = $("#pw2").val();
+			if (pwd1 != "" || pwd2 != "") {
+				if (pwd1 == pwd2) {
+					$("#alert-success").show();
+					$("#alert-danger").hide();
+					$("#submit").removeAttr("disabled");
+				} else {
+					$("#alert-success").hide();
+					$("#alert-danger").show();
+					$("#submit").attr("disabled", "disabled");
+				}
+			}
 		});
 	});
+});
 </script>
 
 </body>

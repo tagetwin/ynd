@@ -175,8 +175,10 @@ td {
 						<div class="col-xl-12 col-md-12">
 							<input id="pw2" type="Password" placeholder="Confirm password" />
 						</div>
+						<div class="alert alert-success" id="alert-success">비밀번호가 일치합니다.</div>
+						<div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
 						<div class="col-xl-12">
-							<button type="submit" class="boxed_btn_green">Sign Up</button>
+							<button id="submit" type="submit" class="boxed_btn_green">Sign Up</button>
 						</div>
 					</div>
 				</form>

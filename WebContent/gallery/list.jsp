@@ -56,12 +56,6 @@
 						<input type="text" name="username" id="username" value="${sessionScope.principal.username}" readonly="readonly"/>
 						<input type="hidden" name="userId" value="${sessionScope.principal.id}"/>
 					</div>
-					
-					<div class="col-xl-12 col-md-12">
-					<label for="subject">Subject</label>
-						<input type="text" name="psubject" id="subject" />
-					</div>
-
 					<div class="col-xl-12 col-md-12">
 						<label for="filename1">파일명 : </label>
 						<input type="file" name="filename1" id="filename1" />

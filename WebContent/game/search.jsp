@@ -45,9 +45,9 @@
 						<div class="prising_content">
 							<i class="far fa-thumbs-up"></i><a>${game.recommendation}</a> <a href="https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/" target="_blank">
 							<img src="img/game/steam.png" width="100" alt=""></a>
-							<a>${game.steamPrice}</a>
+							<a><fmt:formatNumber value="${game.steamPrice}" /></a>
 							<a href="https://directg.net/game/game_page.html?product_code=50002056" target="_blank"><img src="img/game/dg.png" width="100" alt=""></a>
-							<a>${game.directPrice}</a>
+							<a><fmt:formatNumber value="${game.directPrice}" /></a>
 						</div>
 					</div>
 				</div>

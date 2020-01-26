@@ -25,13 +25,13 @@ public class GalleryDao {
 		return instance;
 	}
 
-	public int upload(String fileName, String original, String type, int len, int userId, String psubject) {
+	public int upload(String fileName, String original, String type, int len, int userId) {
 		// 1. Stream 연결
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
 		try {
 			// 2. 쿼리 전송 클래스 (규약에 맞게)
-			final String SQL = "INSERT INTO gallery (fileName, original, type, len, userId, psubject, pCreateTime) VALUES (?, ?, ?, ?, ?, ?, now())";
+			final String SQL = "INSERT INTO gallery (fileName, original, type, len, userId, pCreateTime) VALUES (?, ?, ?, ?, ?, now())";
 			pstmt = conn.prepareStatement(SQL);
 			// 3. SQL문 완성하기
 			pstmt.setString(1, fileName);
@@ -39,7 +39,6 @@ public class GalleryDao {
 			pstmt.setString(3, type);
 			pstmt.setInt(4, len);
 			pstmt.setInt(5, userId);
-			pstmt.setString(6, psubject);
 //			pstmt.setInt(7, degree);
 			// 4. SQL문 전송하기
 			// pstmt.executeQuery();
@@ -83,7 +82,6 @@ public class GalleryDao {
 				String type = rs.getString("type");
 				int len = rs.getInt("len");
 				int userId = rs.getInt("userId");
-				String psubject = rs.getString("psubject");
 				Timestamp pCreateTime = rs.getTimestamp("pCreateTime");
 				Gallery gallery = Gallery.builder()
 						.pid(pid)
@@ -92,7 +90,6 @@ public class GalleryDao {
 						.type(type)
 						.len(len)
 						.userId(userId)
-						.psubject(psubject)
 						.pCreateTime(pCreateTime)
 						.build();
 				

@@ -44,12 +44,10 @@ public class GalleryUploadProcAction implements Action {
 
 		
 		int userId = Integer.parseInt(multi.getParameter("userId"));
-		String psubject = multi.getParameter("psubject");
 		
 		GalleryDao gallerydao = GalleryDao.getInstance();
-		int result = gallerydao.upload(fileName, original, type, len, userId, psubject);
+		int result = gallerydao.upload(fileName, original, type, len, userId);
 		
-
 		
 		if(result == 1) {
 			System.out.println("파일 업로드 성공");

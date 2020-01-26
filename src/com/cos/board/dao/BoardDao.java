@@ -256,4 +256,52 @@ public class BoardDao {
 		}
 		return null;
 	}
+	
+	public List<Board> findRecent() {
+		// 0. 컬렉션 만들기
+		List<Board> boards = new ArrayList<>();
+
+		// 1. Stream 연결
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			// 2. 쿼리 전송 클래스 (규약에 맞게)
+			final String SQL = "SELECT id, boardtitle, left(content,30) content, userId,boardCreateTime FROM board ORDER BY id DESC LIMIT 3";
+			pstmt = conn.prepareStatement(SQL);
+			// 3. SQL문 완성하기
+			// 4. SQL문 전송하기
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				int id = rs.getInt("id");
+				String boardTitle = rs.getString("boardTitle");
+				String content = rs.getString("content");
+				int userId = rs.getInt("userId");
+				Timestamp boardCreateTime = rs.getTimestamp("boardCreateTime");
+				
+				Board board = Board.builder()
+						.id(id)
+						.boardTitle(boardTitle)
+						.content(content)
+						.userId(userId)
+						.boardCreateTime(boardCreateTime)
+						.build();
+				
+				boards.add(board);
+			}
+			return boards;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				rs.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
 }
