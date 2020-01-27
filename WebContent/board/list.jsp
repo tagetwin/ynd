@@ -14,12 +14,16 @@
 		<div class="row">
 			<div class="col-lg-8 mb-5 mb-lg-0">
 				<div class="blog_left_sidebar">
+				
 					<c:forEach var="board" items="${boards}" varStatus="status">
 						<article class="blog_item">
 							<div class="blog_item_img">
-								<img class="card-img rounded-0" src="img/blog/lol.jpg" alt=""> <a href="#" class="blog_item_date">
+								<a href="/yp/board?cmd=detail&id=${board.id}">
+								<img class="card-img rounded-0" src="/yp/upload/${board.fileName}" alt="">
+								</a>
+								<a class="blog_item_date">
 									<h3><fmt:formatDate value="${board.boardCreateTime}" pattern="dd"/></h3>
-									<p>Jan</p>
+									<p><fmt:formatDate value="${board.boardCreateTime}" pattern="MM"/></p>
 								</a>
 							</div>
 
@@ -27,13 +31,12 @@
 								<a class="d-inline-block" href="/yp/board?cmd=detail&id=${board.id}"><h3>${board.boardTitle}</h3></a>
 								<p class="excert">${board.content}</p>
 								<ul class="blog-info-link">
-									<li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
+									<li><a href="#"><i class="fa fa-user"></i>&nbsp ${board.category}</a></li>
 									<li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
 								</ul>
 							</div>
 						</article>
 					</c:forEach>
-					
 
 					<nav class="blog-pagination justify-content-center d-flex">
 						<ul class="pagination">
@@ -47,13 +50,14 @@
 					</nav>
 				</div>
 			</div>
+			
 			<div class="col-lg-4">
 				<div class="blog_right_sidebar">
 					<aside class="single_sidebar_widget search_widget">
-						<form action="#">
+						<form action="/yp/board?cmd=search" method="post">
 							<div class="form-group">
 								<div class="input-group mb-3">
-									<input type="text" class="form-control" placeholder='Search Keyword' onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
+									<input name="boardTitle" type="text" class="form-control" placeholder='Search Keyword' onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'" required="required" />
 									<div class="input-group-append">
 										<button class="btn" type="button">
 											<i class="ti-search"></i>
@@ -68,86 +72,21 @@
 					<aside class="single_sidebar_widget post_category_widget">
 						<h4 class="widget_title">Category</h4>
 						<ul class="list cat-list">
-							<li><a href="#" class="d-flex">
-									<p>Resaurant food</p>
-									<p>(37)</p>
+							<li><a href="/yp/board?cmd=review" class="d-flex">
+									<p>Review</p>
 							</a></li>
-							<li><a href="#" class="d-flex">
-									<p>Travel news</p>
-									<p>(10)</p>
+							<li><a href="/yp/board?cmd=recommendation" class="d-flex">
+									<p>Recommendation</p>
 							</a></li>
-							<li><a href="#" class="d-flex">
-									<p>Modern technology</p>
-									<p>(03)</p>
+							<li><a href="/yp/board?cmd=information" class="d-flex">
+									<p>Information</p>
 							</a></li>
-							<li><a href="#" class="d-flex">
-									<p>Product</p>
-									<p>(11)</p>
-							</a></li>
-							<li><a href="#" class="d-flex">
-									<p>Inspiration</p>
-									<p>21</p>
-							</a></li>
-							<li><a href="#" class="d-flex">
-									<p>Health Care (21)</p>
-									<p>09</p>
+							<li><a href="/yp/board?cmd=tip" class="d-flex">
+									<p>Tip</p>
 							</a></li>
 						</ul>
 					</aside>
-
-					<aside class="single_sidebar_widget popular_post_widget">
-						<h3 class="widget_title">Recent Post</h3>
-						<div class="media post_item">
-							<img src="img/post/post_1.png" alt="post">
-							<div class="media-body">
-								<a href="single-blog.html">
-									<h3>From life was you fish...</h3>
-								</a>
-								<p>January 12, 2019</p>
-							</div>
-						</div>
-						<div class="media post_item">
-							<img src="img/post/post_2.png" alt="post">
-							<div class="media-body">
-								<a href="single-blog.html">
-									<h3>The Amazing Hubble</h3>
-								</a>
-								<p>02 Hours ago</p>
-							</div>
-						</div>
-						<div class="media post_item">
-							<img src="img/post/post_3.png" alt="post">
-							<div class="media-body">
-								<a href="single-blog.html">
-									<h3>Astronomy Or Astrology</h3>
-								</a>
-								<p>03 Hours ago</p>
-							</div>
-						</div>
-						<div class="media post_item">
-							<img src="img/post/post_4.png" alt="post">
-							<div class="media-body">
-								<a href="single-blog.html">
-									<h3>Asteroids telescope</h3>
-								</a>
-								<p>01 Hours ago</p>
-							</div>
-						</div>
-					</aside>
-					<aside class="single_sidebar_widget tag_cloud_widget">
-						<h4 class="widget_title">Tag Clouds</h4>
-						<ul class="list">
-							<li><a href="#">project</a></li>
-							<li><a href="#">love</a></li>
-							<li><a href="#">technology</a></li>
-							<li><a href="#">travel</a></li>
-							<li><a href="#">restaurant</a></li>
-							<li><a href="#">life style</a></li>
-							<li><a href="#">design</a></li>
-							<li><a href="#">illustration</a></li>
-						</ul>
-					</aside>
-
+			
 				</div>
 			</div>
 		</div>

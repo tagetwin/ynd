@@ -38,11 +38,12 @@
 			</div>
 		</div>
 		<div class="row">
+		
 			<c:forEach var="board" items="${boards}" varStatus="status">
 				<div class="col-xl-4 col-md-6 col-lg-4">
 					<div class="single_news">
 						<div class="thumb">
-							<a href="/yp/board?cmd=detail&id=${board.id}"> <img src="img/news/1.png" alt="" />
+							<a href="/yp/board?cmd=detail&id=${board.id}"> <img src="/yp/upload/${board.fileName}" alt="" />
 							</a>
 						</div>
 						<div class="news_content">
@@ -57,6 +58,7 @@
 					</div>
 				</div>
 			</c:forEach>
+			
 		</div>
 	</div>
 </div>

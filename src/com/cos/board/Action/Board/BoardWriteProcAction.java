@@ -31,7 +31,7 @@ public class BoardWriteProcAction implements Action {
 								multi.getParameter("boardTitle").equals("") ||
 								multi.getParameter("content").equals("")
 		) {
-			Script.back(resp, "잘못된 접근입니다.");
+			Script.back(resp, "제목과 내용을 입력해주세요.");
 			System.out.println(req.getParameter("boardTitle"));
 			System.out.println(req.getParameter("content"));
 			return; // 두번이동하게되면 에러 forward
@@ -53,6 +53,7 @@ public class BoardWriteProcAction implements Action {
 		
 		String boardTitle = multi.getParameter("boardTitle");
 		String content = multi.getParameter("content");
+		String category = multi.getParameter("category");
 		User user = (User) req.getSession().getAttribute("principal");
 		
 		
@@ -60,11 +61,11 @@ public class BoardWriteProcAction implements Action {
 		System.out.println(content);
 		System.out.println(user.getId()); 
 		
-		BoardDao boardDao = BoardDao.getInstance();
-		int result = boardDao.save(boardTitle, content, user.getId());
-		
 		GalleryDao galleryDao = GalleryDao.getInstance();
 		galleryDao.upload(fileName, original, type, len, user.getId());
+		
+		BoardDao boardDao = BoardDao.getInstance();
+		int result = boardDao.save(boardTitle, content, user.getId(), category, fileName);
 		
 		
 		if(result == 1) {

@@ -18,6 +18,8 @@ public class Board {
 	private String boardTitle;
 	private String content;
 	private int userId;
+	private String fileName;
+	private String category;
 	private Timestamp boardCreateTime;
 	
 //	public String getBoardtitle() {

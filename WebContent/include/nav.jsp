@@ -68,7 +68,7 @@ td {
 								<nav>
 									<ul id="navigation">
 										<li><a href="/yp/">home</a></li>
-										<li><a href="/yp/game?cmd=list">Game</a></li>
+<!-- 										<li><a href="/yp/game?cmd=list">Game</a></li> -->
 										<li><a href="/yp/board?cmd=list">blog</a></li>
 										<li><a href="/yp/gallery?cmd=list">Gallery</a></li>
 										<c:choose>
@@ -137,10 +137,10 @@ td {
 				<form action="/yp/user?cmd=loginProc" method="POST">
 					<div class="row">
 						<div class="col-xl-12 col-md-12">
-							<input name="username" type="text" placeholder="Enter username" />
+							<input name="username" type="text" placeholder="Enter username" required="required"/>
 						</div>
 						<div class="col-xl-12 col-md-12">
-							<input name="password" type="password" placeholder="Password" />
+							<input name="password" type="password" placeholder="Password" required="required"/>
 						</div>
 						<div class="col-xl-12">
 							<button type="submit" class="boxed_btn_green">Sign in</button>

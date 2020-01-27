@@ -21,6 +21,7 @@
 						<a href="/yp/upload/${gallery.fileName}" class="img-pop-up">
 							<div class="single-gallery-image" style="background: url(/yp/upload/${gallery.fileName});"></div>
 						</a>
+						
 						<c:choose>
 							<c:when test="${sessionScope.principal.id eq gallery.userId }">
 								<form action="/yp/gallery?cmd=delete" method="post">

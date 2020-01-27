@@ -38,6 +38,7 @@ public class BoardUpdateProcAction implements Action {
 		int userId = Integer.parseInt(req.getParameter("userId"));
 		String boardTitle = req.getParameter("boardTitle");
 		String content = req.getParameter("content");
+		String category = req.getParameter("category");
 		User principal = (User) req.getSession().getAttribute("principal");
 		
 		System.out.println("title: "+boardTitle);
@@ -52,7 +53,7 @@ public class BoardUpdateProcAction implements Action {
 		
 		// DAO 연결해서 update 수정하기
 		BoardDao boardDao = BoardDao.getInstance();
-		int result = boardDao.update(boardTitle, content, id);
+		int result = boardDao.update(boardTitle, content, category, id);
 		
 		
 		// update 가 정상("board?cmd=detail&id=변수id이면 혹은 비정상이면

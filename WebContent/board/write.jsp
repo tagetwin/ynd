@@ -17,28 +17,38 @@
 			<div class="col-lg-12">
 				<form class="form-contact contact_form" action="/yp/board?cmd=writeProc" method="post" novalidate="novalidate" enctype="multipart/form-data">
 					<div class="row">
-						<div class="col-sm-4">
+						<div class="col-sm-2">
 							<div class="form-group">
-								<input value="${sessionScope.principal.username}" class="form-control valid" name="username" id="username" type="text" readonly="readonly"/>
+								<input value="${sessionScope.principal.username}" class="single-input" name="username" id="username" type="text" readonly="readonly" />
 							</div>
 						</div>
-						<div class="col-sm-8">
-							<div class="form-group">
-								<input type="file" name="filename1" id="filename1" class="form-control"/>
+						<div class="single-element-widget col-sm-4">
+							<div class="default-select" id="default-select">
+								<select name="category">
+									<option value="review">Review</option>
+									<option value="recommendation">Recommendation</option>
+									<option value="information">Information</option>
+									<option value="tip">Tip</option>
+								</select>
 							</div>
 						</div>
 						<div class="col-12">
 							<div class="form-group">
-								<input class="form-control" name="boardTitle" id="boardTitle" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'" placeholder="Enter Title"/>
+								<input type="file" name="filename1" id="filename1" class="form-control" required/>
 							</div>
 						</div>
 						<div class="col-12">
 							<div class="form-group">
-								<textarea class="form-control w-100" name="content" cols="30" rows="12" placeholder="Enter Content"></textarea>
+								<input class="form-control" name="boardTitle" id="boardTitle" type="text" placeholder="Enter Title" required/>
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="form-group">
+								<textarea class="form-control w-100" name="content" cols="30" rows="12" placeholder="Enter Content" required></textarea>
 							</div>
 						</div>
 					</div>
-					<div class="form-group mt-3">
+					<div class="form-group mt-3 float-right">
 						<button type="submit" class="button button-contactForm boxed-btn">Send</button>
 						<a href="/yp/board?cmd=list" class="button button-contactForm boxed-btn">Close</a>
 					</div>
