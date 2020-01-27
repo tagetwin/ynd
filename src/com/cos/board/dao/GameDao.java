@@ -26,14 +26,14 @@ public class GameDao {
 	}
 
 	public int save(String gameTitle, String gameContent, String genre, String publisher, int steamPrice, 
-			int directPrice, Date publishDate) {
+			int directPrice, Date publishDate, String fileName) {
 		// 1. Stream 연결
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
 		try {
 			// 2. 쿼리 전송 클래스 (규약에 맞게)
-			final String SQL = "INSERT INTO game (gameTitle, gameContent, genre, publisher, publishDate, steamPrice, directPrice, recommendation)"
-					+ " VALUES (?, ?, ?, ?, ?, ?, ?, 0)";
+			final String SQL = "INSERT INTO game (gameTitle, gameContent, genre, publisher, publishDate, steamPrice, directPrice, fileName, recommendation)"
+					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, 0)";
 			pstmt = conn.prepareStatement(SQL);
 			// 3. SQL문 완성하기
 			pstmt.setString(1, gameTitle);
@@ -43,6 +43,7 @@ public class GameDao {
 			pstmt.setDate(5, (java.sql.Date) publishDate);
 			pstmt.setInt(6, steamPrice);
 			pstmt.setInt(7, directPrice);
+			pstmt.setString(8, fileName);
 			// 4. SQL문 전송하기
 			// pstmt.executeQuery();
 			int result = pstmt.executeUpdate();
@@ -241,6 +242,7 @@ public class GameDao {
 				Date publishDate = rs.getDate("publishDate");
 				int steamPrice = rs.getInt("steamPrice");
 				int directPrice = rs.getInt("directPrice");
+				String fileName = rs.getString("fileName");
 				int recommendation = rs.getInt("recommendation");
 				
 				Game game = Game.builder()
@@ -252,6 +254,7 @@ public class GameDao {
 						.publishDate((java.sql.Date) publishDate)
 						.steamPrice(steamPrice)
 						.directPrice(directPrice)
+						.fileName(fileName)
 						.recommendation(recommendation)
 						.build();
 

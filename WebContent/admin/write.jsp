@@ -15,7 +15,7 @@
 				<h2 class="contact-title">Game Post</h2>
 			</div>
 			<div class="col-lg-12">
-				<form class="form-contact contact_form" action="/yp/admin?cmd=writeProc" method="post" novalidate="novalidate">
+				<form class="form-contact contact_form" action="/yp/admin?cmd=writeProc" method="post" novalidate="novalidate" enctype="multipart/form-data">
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="form-group">
@@ -53,7 +53,12 @@
 								<input class="form-control valid" name="directPrice" id="directPrice" type="text"/>
 							</div>
 						</div>
-						
+						<div class="col-12">
+							<div class="form-group">
+							<label>fileName</label>
+								<input type="file" class="form-control w-100" name="filename1" />
+							</div>
+						</div>
 						<div class="col-12">
 							<div class="form-group">
 							<label>Content</label>

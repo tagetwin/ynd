@@ -11,7 +11,7 @@
               <h3>Search Game</h3>
               <div class="find_dowmain">
                 <form action="/yp/game?cmd=search" class="find_dowmain_form" method="POST">
-                  <input name="gameTitle" type="text" placeholder="Find Game Title" />
+                  <input name="gameTitle" type="text" placeholder="Find Game Title" required/>
                   <button type="submit">search</button>
                 </form>
               </div>
@@ -43,11 +43,9 @@
 							</h4>
 						</div>
 						<div class="prising_content">
-							<i class="far fa-thumbs-up"></i><a>${game.recommendation}</a> <a href="https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/" target="_blank">
-							<img src="img/game/steam.png" width="100" alt=""></a>
-							<a><fmt:formatNumber value="${game.steamPrice}" /></a>
-							<a href="https://directg.net/game/game_page.html?product_code=50002056" target="_blank"><img src="img/game/dg.png" width="100" alt=""></a>
-							<a><fmt:formatNumber value="${game.directPrice}" /></a>
+							<i class="far fa-thumbs-up"></i> <a>${game.recommendation}</a> <a href="https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/" target="_blank"> <img src="img/game/steam.png"
+								width="100" alt=""></a> <a><fmt:formatNumber value="${game.steamPrice}" /></a> <a href="https://directg.net/game/game_page.html?product_code=50002056" target="_blank"> <img
+								src="img/game/dg.png" width="100" alt=""></a> <a><fmt:formatNumber value="${game.directPrice}" /></a>
 						</div>
 					</div>
 				</div>

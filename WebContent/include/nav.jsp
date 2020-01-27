@@ -167,10 +167,10 @@ td {
 				<form action="/yp/user?cmd=joinProc" method="POST">
 					<div class="row">
 						<div class="col-xl-12 col-md-12">
-							<input name="username" type="text" placeholder="Enter username" />
+							<input name="username" type="text" placeholder="Enter username" required/>
 						</div>
 						<div class="col-xl-12 col-md-12">
-							<input id="pw1" name="password" type="password" placeholder="Enter Password" />
+							<input id="pw1" name="password" type="password" placeholder="Enter Password" required/>
 						</div>
 						<div class="col-xl-12 col-md-12">
 							<input id="pw2" type="Password" placeholder="Confirm password" />

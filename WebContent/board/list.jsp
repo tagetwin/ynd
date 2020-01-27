@@ -31,8 +31,8 @@
 								<a class="d-inline-block" href="/yp/board?cmd=detail&id=${board.id}"><h3>${board.boardTitle}</h3></a>
 								<p class="excert">${board.content}</p>
 								<ul class="blog-info-link">
-									<li><a href="#"><i class="fa fa-user"></i>&nbsp ${board.category}</a></li>
-									<li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+									<li><i class="fa fa-user"></i>&nbsp ${board.category}</li>
+									<li><i class="fa fa-comments"></i> 03 Comments</li>
 								</ul>
 							</div>
 						</article>

@@ -23,6 +23,8 @@ public class UserFactory {
 			return new UserNameCheckAction();
 		}else if (cmd.equals("delete")) {
 			return new UserdeleteAction();
+		}else if (cmd.equals("regmail")) {
+			return new UserRegMailAction();
 		}
 		
 		return null;	

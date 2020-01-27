@@ -11,7 +11,7 @@
 							</a>
 						</div>
 						<p class="footer_text doanar">
-							<a class="first" href="#">+10 0008 0000 </a> <br /> <a href="">yndg@support.com</a>
+							<a class="first">+10 0008 0000 </a> <br /> <a href="/yp/admin?cmd=mail">yndg@support.com</a>
 						</p>
 						<div class="socail_links">
 							<ul>
@@ -31,19 +31,18 @@
 						<h3 class="footer_title">Navigation</h3>
 						<ul>
 							<li><a href="#test-form2" class="login popup-with-form">Join</a></li>
-
 							<li><a href="#test-form" class="login popup-with-form">Login</a></li>
 							<li><a href="/yp/board?cmd=list">Blog</a></li>
-							<li><a href="/yp/board?cmd=gallerylist">Gallery</a></li>
+							<li><a href="/yp/gallery?cmd=list">Gallery</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-xl-5 col-md-6 col-lg-5">
 					<div class="footer_widget">
 						<h3 class="footer_title">Newsletter</h3>
-						<form action="#" class="newsletter_form">
-							<input type="text" placeholder="Enter your mail" />
-							<button type="submit">Sign Up</button>
+						<form action="/yp/" class="newsletter_form" method="post">
+							<input name="email" id="email" type="email" placeholder="Enter your mail" required/>
+							<button onclick="regmail()" type="button">Sign Up</button>
 						</form>
 						<p class="newsletter_text">Subscribe newsletter to get updates</p>
 					</div>
@@ -94,6 +93,7 @@
 <script src="js/gijgo.min.js"></script>
 <script src="js/jquery.exif.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.js"></script>
+<script src="js/mailpw.js"></script>
 
 <!--contact js-->
 <script src="js/contact.js"></script>
@@ -103,37 +103,6 @@
 <script src="js/mail-script.js"></script>
 <script src="js/all.js"></script>
 <script src="js/main.js"></script>
-
-<script>
-$(document).ready(function() {
-	$('#summernote').summernote({
-		  placeholder: 'Enter Content',
-	        tabsize: 3,
-	        height: 200
-	});
-
-
-	$(function() {
-		$("#alert-success").hide();
-		$("#alert-danger").hide();
-		$("input").keyup(function() {
-			var pwd1 = $("#pw1").val();
-			var pwd2 = $("#pw2").val();
-			if (pwd1 != "" || pwd2 != "") {
-				if (pwd1 == pwd2) {
-					$("#alert-success").show();
-					$("#alert-danger").hide();
-					$("#submit").removeAttr("disabled");
-				} else {
-					$("#alert-success").hide();
-					$("#alert-danger").show();
-					$("#submit").attr("disabled", "disabled");
-				}
-			}
-		});
-	});
-});
-</script>
 
 </body>
 </html>

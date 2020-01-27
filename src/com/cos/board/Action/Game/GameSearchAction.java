@@ -32,7 +32,11 @@ public class GameSearchAction implements Action {
 		GameDao gameDao = GameDao.getInstance();
 		List<Game> games = gameDao.findAll(gameTitle);	
 		
+		System.out.println(games);
+		
+		
 		req.setAttribute("games", games);
+		
 		
 		RequestDispatcher dis = req.getRequestDispatcher("/game/search.jsp");
 		dis.forward(req, resp);

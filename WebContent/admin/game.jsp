@@ -35,7 +35,7 @@
 			<tbody>
 			<c:forEach var="game" items="${games}" varStatus="status">
 				<tr>
-					<td>${game.gid}</td>
+					<td><a href="/yp/game?cmd=detail&gid=${game.gid}">${game.gid}</a></td>
 					<td>${game.gameTitle}</td>
 					<td>${game.gameContent}</td>
 					<td>${game.genre}</td>

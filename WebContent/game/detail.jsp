@@ -16,12 +16,10 @@ p {
 <div class="whole-wrap">
 	<div class="container box_1170">
 		<div class="section-top-border">
-			<%-- 			<c:forEach var="game" items="${games}" varStatus="status"> --%>
-
 			<h3 class="mb-30">${games.gameTitle}</h3>
 			<div class="row">
 				<div class="col-md-8 col-sm-12">
-					<img src="img/game/dargonball.png" width="640" alt="" class="img-fluid">
+					<img src="/yp/upload/${games.fileName}" width="640" alt="" class="img-fluid">
 					<p id="gamedetail">
 						<br>${games.gameContent}<br>
 					</p>
@@ -38,11 +36,8 @@ p {
 					<br>
 					<p>최저가격 : ${games.steamPrice gt games.directPrice ? games.directPrice : games.steamPrice}</p>
 					<br>
-
 				</div>
 			</div>
-
-			<%-- 			</c:forEach> --%>
 		</div>
 	</div>
 </div>
