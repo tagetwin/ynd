@@ -14,14 +14,13 @@
 	<a href="/yp/admin?cmd=blog" class="genric-btn primary-border large mt-3">Blog</a>
 	<a href="/yp/admin?cmd=gallery" class="genric-btn info large mt-3">Gallery</a>
 	<a href="/yp/admin?cmd=game" class="genric-btn danger-border large mt-3">Game</a>
-
+	<a href="/yp/admin?cmd=maillist" class="genric-btn warning-border large mt-3">Email</a>
 		<div class="section-top-border">
 			<h3 class="mb-30">갤러리 페이지</h3>
 			<div class="progress-table-wrap">
 				<div class="progress-table">
 					<div class="table-head">
 						<div class="serial">#</div>
-						<div class="country">Title</div>
 						<div class="visit">Username</div>
 						<div class="percentage">Filename</div>
 						<div class="percentage">CreateTime</div>
@@ -29,7 +28,6 @@
 					<c:forEach var="gallery" items="${gallerys}" varStatus="status">
 					<div class="table-row">
 						<div class="serial">${gallery.pid}</div>
-						<div class="country">${gallery.psubject}</div>
 						<div class="visit">${gallery.userId}</div>
 						<div class="percentage">${gallery.fileName}</div>
 						<div class="percentage">${gallery.PCreateTime}</div>
@@ -47,3 +45,6 @@
 </div>
 
 <%@ include file="/include/footer.jsp"%>
+<%@ include file="/include/js.jsp"%>
+</body>
+</html>

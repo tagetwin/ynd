@@ -24,9 +24,10 @@ public class AdminFactory {
 			return new AdminGameUpdateProcAction();
 		}else if(cmd.equals("delete")) {
 			return new AdminGameDeleteAction();
-		}else if(cmd.equals("mail")) {
-			return new AdminMailAction();
-		}
+		}else if(cmd.equals("maillist")) {
+			return new AdminMailListAction();
+		}else if(cmd.equals("maildelete"))
+			return new AdminMailDeleteAction();
 		return null;	
 	}
 	

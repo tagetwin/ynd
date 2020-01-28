@@ -24,36 +24,37 @@ $(document).ready(function() {
 			}
 		});
 	});
-	function regmail() {
-		var email = $("#email").val();
-		if (email === "" || email === null) {
-			alert('email이 입력되지 않았습니다.');
-			return;
-		}
-
-		var mail = {
-			reg_mail : email
-		}
-
-		$.ajax({
-			type : "POST",
-			url : "/yp/user?cmd=regmail",
-			dataType : "text",
-			contentType : "application/json",
-			data : JSON.stringify(mail),
-			success : function(data) {
-				if (data === "ok") {
-					alert("메일이 등록되었습니다.")
-					$("#email").val('');
-				} else {
-					alert("메일이 등록이 실패하였습니다.")
-				}
-
-			},
-			error : function(data) {
-				alert("통신실패")
-			}
-		});
-
-	}
+	
 });
+function regmail() {
+	var email = $("#email").val();
+	if (email === "" || email === null) {
+		alert('email이 입력되지 않았습니다.');
+		return;
+	}
+
+	var mail = {
+		reg_mail : email
+	}
+
+	$.ajax({
+		type : "POST",
+		url : "/yp/user?cmd=regmail",
+		dataType : "text",
+		contentType : "application/json",
+		data : JSON.stringify(mail),
+		success : function(data) {
+			if (data === "ok") {
+				alert("메일이 등록되었습니다.")
+				$("#email").val('');
+			} else {
+				alert("메일이 등록이 실패하였습니다.")
+			}
+
+		},
+		error : function(data) {
+			alert("통신실패")
+		}
+	});
+
+}

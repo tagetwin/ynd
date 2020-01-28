@@ -30,6 +30,8 @@ public class BoardDetailAction implements Action {
 		BoardDao boardDao = BoardDao.getInstance();
 		BoardUserVM buVM = boardDao.findById(id);
 		
+				
+		
 		if(buVM != null) {
 			req.setAttribute("buVM", buVM);
 			RequestDispatcher dis = req.getRequestDispatcher("/board/detail.jsp");

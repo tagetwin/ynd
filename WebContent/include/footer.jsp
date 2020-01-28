@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- footer -->
 <footer class="footer">
 	<div class="footer_top">
@@ -11,7 +12,7 @@
 							</a>
 						</div>
 						<p class="footer_text doanar">
-							<a class="first">+10 0008 0000 </a> <br /> <a href="/yp/admin?cmd=mail">yndg@support.com</a>
+							<a class="first">+10 0008 0000 </a> <br /> <a>yndg@support.com</a>
 						</p>
 						<div class="socail_links">
 							<ul>
@@ -30,8 +31,12 @@
 					<div class="footer_widget">
 						<h3 class="footer_title">Navigation</h3>
 						<ul>
-							<li><a href="#test-form2" class="login popup-with-form">Join</a></li>
-							<li><a href="#test-form" class="login popup-with-form">Login</a></li>
+							<c:choose>
+								<c:when test="${empty sessionScope.principal}">
+									<li><a href="#test-form2" class="login popup-with-form">Join</a></li>
+									<li><a href="#test-form" class="login popup-with-form">Login</a></li>
+								</c:when>
+							</c:choose>
 							<li><a href="/yp/board?cmd=list">Blog</a></li>
 							<li><a href="/yp/gallery?cmd=list">Gallery</a></li>
 						</ul>
@@ -73,36 +78,5 @@
 
 
 <!-- JS here -->
-<script src="js/vendor/modernizr-3.5.0.min.js"></script>
-<script src="js/vendor/jquery-1.12.4.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/isotope.pkgd.min.js"></script>
-<script src="js/ajax-form.js"></script>
-<script src="js/waypoints.min.js"></script>
-<script src="js/jquery.counterup.min.js"></script>
-<script src="js/imagesloaded.pkgd.min.js"></script>
-<script src="js/scrollIt.js"></script>
-<script src="js/jquery.scrollUp.min.js"></script>
-<script src="js/wow.min.js"></script>
-<script src="js/nice-select.min.js"></script>
-<script src="js/jquery.slicknav.min.js"></script>
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/plugins.js"></script>
-<script src="js/gijgo.min.js"></script>
-<script src="js/jquery.exif.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.js"></script>
-<script src="js/mailpw.js"></script>
 
-<!--contact js-->
-<script src="js/contact.js"></script>
-<script src="js/jquery.ajaxchimp.min.js"></script>
-<script src="js/jquery.form.js"></script>
-<script src="js/jquery.validate.min.js"></script>
-<script src="js/mail-script.js"></script>
-<script src="js/all.js"></script>
-<script src="js/main.js"></script>
 
-</body>
-</html>

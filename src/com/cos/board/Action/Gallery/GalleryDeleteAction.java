@@ -47,7 +47,7 @@ public class GalleryDeleteAction implements Action {
 				
 			}else {
 				System.out.println("관리자이미지삭제성공");
-				resp.sendRedirect("/yp/user?cmd=admin");
+				resp.sendRedirect("/yp/admin?cmd=gallery");
 			}
 			
 		}else {

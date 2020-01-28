@@ -30,16 +30,92 @@ p {
 					<br>
 					<p>배급사 : ${games.publisher}</p>
 					<br>
-					<p>출시일 : <fmt:formatDate value="${games.publishDate}" pattern="yyyy년 MM월 dd일"/> </p>
+					<p>
+						출시일 :
+						<fmt:formatDate value="${games.publishDate}" pattern="yyyy년 MM월 dd일" />
+					</p>
 					<br>
-					<p>추천수 : ${games.recommendation}</p>
+					<p>추천수 : <span class="rec_count"></span></p>
 					<br>
 					<p>최저가격 : ${games.steamPrice gt games.directPrice ? games.directPrice : games.steamPrice}</p>
 					<br>
+					<c:choose>
+						<c:when test="${not empty sessionScope.principal}">
+							<div>
+								<button id="likegame" onclick="likegame()" type="button" class="btn btn-info">
+									<i class="fas fa-thumbs-up"></i>
+								</button>
+							</div>
+						</c:when>
+					</c:choose>
 				</div>
+
 			</div>
 		</div>
 	</div>
 </div>
 
 <%@ include file="../include/footer.jsp"%>
+<%@ include file="/include/js.jsp"%>
+<script>
+$(function(){
+	
+	
+	
+});
+function likegame(){
+	
+	var data = {
+			userId : ${sessionScope.principal.id},
+			gid : ${games.gid}
+			}
+	
+	$.ajax({
+		type:"POST",
+		url : "/yp/game?cmd=like",
+		dataType : "text",
+		contentType : "application/json",
+		data : JSON.stringify(data),
+		success : function(data){
+			if(data==="ok"){
+				alert("추천하였습니다.")
+				recCount();
+			}else{
+				alert("이미 추천하셨습니다.")
+			}
+		},
+		error : function(data) {
+			alert("통신실패1")
+		}	
+	});
+}	
+
+function recCount() {
+	 var data = {
+			 gid : ${games.gid}
+			 }
+		$.ajax({
+			type: "POST",
+			url: "/yp/game?cmd=count",
+			dataType : "text",
+			contentType : "application/json",
+			data : JSON.stringify(data),
+       	success: function (result) {
+       		$(".rec_count").html(result);
+       	},
+       	error : function(result) {
+      	 alert("통신실패2");
+       	}
+			
+		});
+	}
+
+recCount();
+
+
+
+</script>
+
+
+</body>
+</html>

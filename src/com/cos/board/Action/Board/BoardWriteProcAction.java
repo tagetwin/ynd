@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.cos.board.Action.Action;
+import com.cos.board.Model.Board;
 import com.cos.board.Model.User;
 import com.cos.board.dao.BoardDao;
 import com.cos.board.dao.GalleryDao;
@@ -67,12 +68,16 @@ public class BoardWriteProcAction implements Action {
 		BoardDao boardDao = BoardDao.getInstance();
 		int result = boardDao.save(boardTitle, content, user.getId(), category, fileName);
 		
+		BoardDao boardDao2 = BoardDao.getInstance();
+		Board board = boardDao2.findByMax();
 		
+		int max = board.getId();
+		System.out.println(max);
 		if(result == 1) {
 //			RequestDispatcher dis = req.getRequestDispatcher("/board?cmd=list");
 //			dis.forward(req, resp);
-			resp.sendRedirect("/yp/board?cmd=list");
-//			resp.sendRedirect("/yp/board?cmd=detail&id="+id);
+//			resp.sendRedirect("/yp/board?cmd=list");
+			resp.sendRedirect("/yp/board?cmd=detail&id="+max);
 		}else {
 			Script.back(resp, "글 입력시 오류가 발생하였습니다.");
 		}

@@ -19,6 +19,6 @@ public class Gallery {
 	private String type;
 	private int len;
 	private int userId;
-//	private int degree;
+	private int only;
 	private Timestamp pCreateTime;
 }

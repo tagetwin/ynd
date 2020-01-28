@@ -15,7 +15,7 @@
 				<h2 class="contact-title">Game Post</h2>
 			</div>
 			<div class="col-lg-12">
-				<form class="form-contact contact_form" action="/yp/admin?cmd=updateProc" method="post" novalidate="novalidate">
+				<form class="form-contact contact_form" action="/yp/admin?cmd=updateProc" method="post" novalidate="novalidate" enctype="multipart/form-data">
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="form-group">
@@ -54,11 +54,16 @@
 								<input value="${games.directPrice}" class="form-control valid" name="directPrice" id="directPrice" type="text"/>
 							</div>
 						</div>
-						
+						<div class="col-12">
+							<div class="form-group">
+							<label>fileName</label>
+								<input value="/yp/upload/${games.fileName}" type="file" class="form-control w-100" name="filename1" />
+							</div>
+						</div>
 						<div class="col-12">
 							<div class="form-group">
 							<label>Content</label>
-								<textarea  class="form-control w-100" name="gameContent" id=summernote cols="30" rows="15" placeholder="Enter Content">${games.gameContent}</textarea>
+								<textarea  class="form-control w-100" name="gameContent" cols="30" rows="15" placeholder="Enter Content">${games.gameContent}</textarea>
 							</div>
 						</div>
 					</div>
@@ -73,3 +78,6 @@
 </section>
 
 <%@ include file="/include/footer.jsp"%>
+<%@ include file="/include/js.jsp"%>
+</body>
+</html>

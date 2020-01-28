@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: yndg
 -- ------------------------------------------------------
--- Server version	8.0.18
+-- Server version	5.7.28-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,33 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `comment`
+-- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `comment`;
+DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `comment` (
-  `cid` int(11) NOT NULL AUTO_INCREMENT,
-  `id` int(11) DEFAULT NULL,
-  `comment` longtext,
-  `userId` int(11) DEFAULT NULL,
-  `commentTime` datetime DEFAULT NULL,
-  PRIMARY KEY (`cid`),
-  KEY `id` (`id`),
-  KEY `userId` (`userId`),
-  CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`id`) REFERENCES `board` (`id`),
-  CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) DEFAULT NULL,
+  `password` varchar(100) DEFAULT NULL,
+  `email` varchar(30) DEFAULT NULL,
+  `address` varchar(50) DEFAULT NULL,
+  `createTime` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `comment`
+-- Dumping data for table `user`
 --
 
-LOCK TABLES `comment` WRITE;
-/*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-/*!40000 ALTER TABLE `comment` ENABLE KEYS */;
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'admin','1234',NULL,NULL,'2020-01-28 00:51:43'),(2,'ssar','1234',NULL,NULL,'2020-01-28 01:49:21'),(3,'yndg','1234',NULL,NULL,'2020-01-28 02:48:17');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-28  3:12:37
+-- Dump completed on 2020-01-28 19:02:45

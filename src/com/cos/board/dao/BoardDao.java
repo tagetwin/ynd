@@ -60,19 +60,20 @@ public class BoardDao {
 		return -1;
 	}
 
-	public int update(String boardTitle, String content, String category, int id) {
+	public int update(String boardTitle, String content, String category, String fileName, int id) {
 		// 1. Stream 연결
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
 		try {
 			// 2. 쿼리 전송 클래스 (규약에 맞게)
-			final String SQL = "UPDATE board SET boardTitle = ?, content = ?, category = ? WHERE id = ?";
+			final String SQL = "UPDATE board SET boardTitle = ?, content = ?, category = ?, fileName = ? WHERE id = ?";
 			pstmt = conn.prepareStatement(SQL);
 			// 3. SQL문 완성하기
 			pstmt.setString(1, boardTitle);
 			pstmt.setString(2, content);
 			pstmt.setString(3, category);
-			pstmt.setInt(4, id);
+			pstmt.setString(4, fileName);
+			pstmt.setInt(5, id);
 
 			// 4. SQL문 전송하기
 			// pstmt.executeQuery();
@@ -585,4 +586,43 @@ public class BoardDao {
 		}
 		return null;
 	}
+	
+	public Board findByMax() {
+
+		// 1. Stream 연결
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			// 2. 쿼리 전송 클래스 (규약에 맞게)
+			final String SQL = "SELECT max(id) id FROM board";
+			pstmt = conn.prepareStatement(SQL);
+			// 3. SQL문 완성하기
+			// 4. SQL문 전송하기
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				int id = rs.getInt("id");
+				
+				Board board = Board.builder()
+						.id(id)
+						.build();
+			
+				return board;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				rs.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+	
 }

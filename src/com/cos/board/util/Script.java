@@ -39,7 +39,7 @@ public class Script {
 	public static void fail(HttpServletResponse resp) throws IOException {
 
 		PrintWriter out = resp.getWriter();
-		out.print("ok");
+		out.print("fail");
 		out.flush();
 	}
 }

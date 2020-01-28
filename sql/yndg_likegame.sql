@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: yndg
 -- ------------------------------------------------------
--- Server version	8.0.18
+-- Server version	5.7.28-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,27 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `mailaddress`
+-- Table structure for table `likegame`
 --
 
-DROP TABLE IF EXISTS `mailaddress`;
+DROP TABLE IF EXISTS `likegame`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `mailaddress` (
-  `mid` int(11) NOT NULL AUTO_INCREMENT,
-  `reg_mail` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`mid`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `likegame` (
+  `lid` int(11) NOT NULL AUTO_INCREMENT,
+  `gid` int(11) DEFAULT NULL,
+  `userId` int(11) DEFAULT NULL,
+  `recommendation` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`lid`,`recommendation`),
+  KEY `userId_idx` (`userId`),
+  KEY `gid_idx` (`gid`),
+  CONSTRAINT `gid` FOREIGN KEY (`gid`) REFERENCES `game` (`gid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `userId` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `mailaddress`
+-- Dumping data for table `likegame`
 --
 
-LOCK TABLES `mailaddress` WRITE;
-/*!40000 ALTER TABLE `mailaddress` DISABLE KEYS */;
-INSERT INTO `mailaddress` VALUES (2,'tagetwin@naver.com'),(3,'tagetwin@gmail.com');
-/*!40000 ALTER TABLE `mailaddress` ENABLE KEYS */;
+LOCK TABLES `likegame` WRITE;
+/*!40000 ALTER TABLE `likegame` DISABLE KEYS */;
+INSERT INTO `likegame` VALUES (1,3,2,1),(2,1,2,1);
+/*!40000 ALTER TABLE `likegame` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -48,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-28  3:12:37
+-- Dump completed on 2020-01-28 19:02:44

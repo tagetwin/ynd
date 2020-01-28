@@ -57,6 +57,9 @@
 
     <!-- have_question_start -->
     <div class="search_area"></div>
-
+ 
 
 <%@ include file="/include/footer.jsp"%>
+<%@ include file="/include/js.jsp"%>
+</body>
+</html>

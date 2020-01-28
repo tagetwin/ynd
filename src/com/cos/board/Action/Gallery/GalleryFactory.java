@@ -12,6 +12,8 @@ public class GalleryFactory {
 			return new GalleryUploadProcAction();
 		}else if(cmd.equals("delete")) {
 			return new GalleryDeleteAction();
+		}else if(cmd.equals("uploadOnlyProc")) {
+			return new GalleryUploadOnlyProcAction();
 		}
 		return null;	
 	}

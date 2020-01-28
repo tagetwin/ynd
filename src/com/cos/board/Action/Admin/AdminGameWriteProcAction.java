@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cos.board.Action.Action;
 import com.cos.board.Model.User;
-import com.cos.board.dao.BoardDao;
 import com.cos.board.dao.GalleryDao;
 import com.cos.board.dao.GameDao;
 import com.cos.board.util.Script;

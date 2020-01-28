@@ -50,7 +50,7 @@
 				</a>
 			</div>
 			<h3 class="text-center">IMAGE UPLOAD</h3>
-			<form action="/yp/gallery?cmd=uploadProc" method="POST" enctype="multipart/form-data">
+			<form action="/yp/gallery?cmd=uploadOnlyProc" method="POST" enctype="multipart/form-data">
 				<div class="row">
 					<div class="col-xl-12 col-md-12">
 					<label for="username">Username</label>
@@ -75,3 +75,6 @@
 
 <!--추후에 이미지가 없으면 이미지가 없습니다라고 띄워주기choose when -->
 <%@ include file="/include/footer.jsp"%>
+<%@ include file="/include/js.jsp"%>
+</body>
+</html>

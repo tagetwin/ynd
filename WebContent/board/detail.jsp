@@ -144,3 +144,18 @@
 </section>
 
 <%@ include file="/include/footer.jsp"%>
+<%@ include file="/include/js.jsp"%>
+<script>
+      $("#btn_add_box").on("click", function() {
+        var new_box = document.createElement("div");
+        // 1. new_box에 class 주는 법
+        // 2. id=container를 찾아서 append하는 법
+
+        $("#container").append("<h5><a>${sessionScope.principal.username}</a></h5></br>");
+        $("#container").append("<p class='comment'>Multiply sea night grass fourth day sea lesser rule open subdue female fill which them Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser</p>");
+        $("#container").append("<p class='date'>December 4, 2017 at 3:12 pm</p></br>");
+      });
+    </script>
+
+</body>
+</html>

@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: yndg
 -- ------------------------------------------------------
--- Server version	8.0.18
+-- Server version	5.7.28-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -30,11 +30,12 @@ CREATE TABLE `gallery` (
   `type` varchar(50) DEFAULT NULL,
   `len` int(11) DEFAULT NULL,
   `pCreateTime` timestamp NULL DEFAULT NULL,
+  `only` int(11) DEFAULT NULL,
   PRIMARY KEY (`pid`),
   KEY `userId` (`userId`),
   KEY `gallery_ibfk_2_idx` (`filename`),
   CONSTRAINT `gallery_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +44,7 @@ CREATE TABLE `gallery` (
 
 LOCK TABLES `gallery` WRITE;
 /*!40000 ALTER TABLE `gallery` DISABLE KEYS */;
-INSERT INTO `gallery` VALUES (32,11,'7707F653-2C84-4192-8316-FFCF9EE766A4.jpeg','7707F653-2C84-4192-8316-FFCF9EE766A4.jpeg','image/jpeg',162417,'2020-01-24 01:56:43'),(37,13,'아이유 020.JPG','아이유 020.JPG','image/jpeg',1178749,'2020-01-27 03:38:48'),(38,13,'37ADC812-EAC4-4847-9196-0524444D27ED.jpeg','37ADC812-EAC4-4847-9196-0524444D27ED.jpeg','image/jpeg',142268,'2020-01-27 03:45:02'),(40,13,'아이유 023.jpg','아이유 023.jpg','image/jpeg',581473,'2020-01-27 04:28:48'),(41,13,'20141018_010952.jpg','20141018_010952.jpg','image/jpeg',1838482,'2020-01-27 04:34:40'),(42,13,'7194C93B-2CC9-4E10-9FA5-A5C7C423B553.png','7194C93B-2CC9-4E10-9FA5-A5C7C423B553.png','image/png',280238,'2020-01-27 08:34:17'),(43,19,'20141223_161343.jpg','20141223_161343.jpg','image/jpeg',2144596,'2020-01-27 09:55:36'),(44,19,'20130720_160850.jpg','20130720_160850.jpg','image/jpeg',2038661,'2020-01-27 09:57:57'),(45,19,'20151003_192452.jpg','20151003_192452.jpg','image/jpeg',1673580,'2020-01-27 09:59:48'),(46,2,'bg.png','bg.png','image/png',476990,'2020-01-27 18:00:17'),(47,2,'bg1.png','bg.png','image/png',476990,'2020-01-27 18:01:23'),(48,2,'bg2.png','bg.png','image/png',476990,'2020-01-27 18:03:10');
+INSERT INTO `gallery` VALUES (4,1,'Screenshot_113.png','Screenshot_11.png','image/png',119003,'2020-01-28 00:58:22',NULL),(13,1,'Screenshot_133.png','Screenshot_13.png','image/png',107743,'2020-01-28 01:44:47',NULL),(16,1,'Screenshot_101.png','Screenshot_10.png','image/png',537328,'2020-01-28 02:05:54',NULL),(17,2,'Screenshot_61.png','Screenshot_6.png','image/png',270173,'2020-01-28 02:12:15',NULL),(19,2,'Screenshot_71.png','Screenshot_7.png','image/png',1133247,'2020-01-28 02:25:48',1),(20,2,'Screenshot_84.png','Screenshot_8.png','image/png',637581,'2020-01-28 02:26:07',0),(21,1,'b14.jpg','b1.jpg','image/jpeg',16254,'2020-01-28 02:28:10',0),(22,1,'Screenshot_33.png','Screenshot_3.png','image/png',49492,'2020-01-28 02:28:28',0),(23,2,'Screenshot_72.png','Screenshot_7.png','image/png',1133247,'2020-01-28 02:44:27',0),(24,2,'Screenshot_34.png','Screenshot_3.png','image/png',49492,'2020-01-28 02:46:19',0),(25,3,'Screenshot_14.png','Screenshot_14.png','image/png',219755,'2020-01-28 02:48:35',0);
 /*!40000 ALTER TABLE `gallery` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-28  3:12:38
+-- Dump completed on 2020-01-28 19:02:45

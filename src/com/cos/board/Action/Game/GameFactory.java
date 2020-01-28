@@ -15,6 +15,8 @@ public class GameFactory {
 			return new GameLikeAction();
 		}else if (cmd.equals("list")) {
 			return new GameListAction();
+		}else if (cmd.equals("count")) {
+			return new GameCountAction();
 		}
 		return null;	
 	}

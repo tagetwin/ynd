@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: yndg
 -- ------------------------------------------------------
--- Server version	8.0.18
+-- Server version	5.7.28-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,32 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user`
+-- Table structure for table `mailaddress`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `mailaddress`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(20) DEFAULT NULL,
-  `password` varchar(100) DEFAULT NULL,
-  `email` varchar(30) DEFAULT NULL,
-  `address` varchar(50) DEFAULT NULL,
-  `createTime` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `mailaddress` (
+  `mid` int(11) NOT NULL AUTO_INCREMENT,
+  `reg_mail` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`mid`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `mailaddress`
 --
 
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (2,'admin','1234',NULL,NULL,'2020-01-22 09:46:54'),(11,'ssar','1234','ssar@gmail.com','서울특별시 용산구 이태원로 29, 전쟁기념관 (용산동1가)','2020-01-24 01:17:49'),(13,'ynd','1234',NULL,NULL,'2020-01-24 01:51:26'),(19,'yndg','1234',NULL,NULL,'2020-01-26 10:36:01'),(21,'test','1234',NULL,NULL,'2020-01-26 14:05:59');
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+LOCK TABLES `mailaddress` WRITE;
+/*!40000 ALTER TABLE `mailaddress` DISABLE KEYS */;
+INSERT INTO `mailaddress` VALUES (5,'ssar@nate.com'),(6,'apple@nate.com');
+/*!40000 ALTER TABLE `mailaddress` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-28  3:12:37
+-- Dump completed on 2020-01-28 19:02:45

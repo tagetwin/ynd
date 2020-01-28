@@ -64,14 +64,14 @@ public class GameDao {
 	}
 
 	public int update(String gameTitle, String gameContent, String genre, String publisher, int steamPrice, 
-			int directPrice, Date publishDate, int gid) {
+			int directPrice, Date publishDate, String fileName, int gid) {
 		// 1. Stream 연결
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
 		try {
 			// 2. 쿼리 전송 클래스 (규약에 맞게)
 			final String SQL = "UPDATE game SET gameTitle = ?, gameContent = ?, genre = ?, publisher = ?,"
-					+ " publishDate = ?, steamPrice = ?, directPrice = ?  WHERE gid = ?";
+					+ " publishDate = ?, steamPrice = ?, directPrice = ?, fileName = ?   WHERE gid = ?";
 			pstmt = conn.prepareStatement(SQL);
 			// 3. SQL문 완성하기
 			pstmt.setString(1, gameTitle);
@@ -81,7 +81,8 @@ public class GameDao {
 			pstmt.setDate(5, (java.sql.Date) publishDate);
 			pstmt.setInt(6, steamPrice);
 			pstmt.setInt(7, directPrice);
-			pstmt.setInt(8, gid);
+			pstmt.setString(8, fileName);
+			pstmt.setInt(9, gid);
 			// 4. SQL문 전송하기
 			// pstmt.executeQuery();
 			int result = pstmt.executeUpdate();
@@ -321,6 +322,119 @@ public class GameDao {
 			}
 
 			return games;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				rs.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+	
+	public int addlike(int gid) {
+		// 1. Stream 연결
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement pstmt = null;
+		try {
+			// 2. 쿼리 전송 클래스 (규약에 맞게)
+			final String SQL = "UPDATE game set recommendation = recommendation+1 WHERE gid = ?";
+			pstmt = conn.prepareStatement(SQL);
+			// 3. SQL문 완성하기
+			pstmt.setInt(1, gid);
+			// 4. SQL문 전송하기
+			// pstmt.executeQuery();
+			int result = pstmt.executeUpdate();
+
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return -1;
+	}
+	
+	public Game count(int gid) {
+		// 0. 컬렉션 만들기
+
+		// 1. Stream 연결
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			// 2. 쿼리 전송 클래스 (규약에 맞게)
+			final String SQL = "SELECT recommendation FROM game WHERE gid = ?";
+			System.out.println(SQL);
+			pstmt = conn.prepareStatement(SQL);
+			// 3. SQL문 완성하기
+			pstmt.setInt(1, gid);
+			// 4. SQL문 전송하기
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+			
+				int recommendation = rs.getInt("recommendation");
+				
+				Game game = Game.builder()
+						.recommendation(recommendation)
+						.build();
+
+				return game;	
+			}
+
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				rs.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+	
+	public Game recCheck(int gid, int userId) {
+
+		// 1. Stream 연결
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			// 2. 쿼리 전송 클래스 (규약에 맞게)
+			final String SQL = "SELECT recommendation FROM likegame WHERE gid= ? and userId = ?";
+			System.out.println(SQL);
+			pstmt = conn.prepareStatement(SQL);
+			// 3. SQL문 완성하기
+			pstmt.setInt(1, gid);
+			pstmt.setInt(2, userId);
+			// 4. SQL문 전송하기
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				int recommendation = rs.getInt("recommendation");
+				
+				Game game = Game.builder()
+						.recommendation(recommendation)
+						.build();
+
+				return game;	
+			}
+
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

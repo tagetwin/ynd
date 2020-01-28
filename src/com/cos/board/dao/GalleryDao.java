@@ -31,7 +31,7 @@ public class GalleryDao {
 		PreparedStatement pstmt = null;
 		try {
 			// 2. 쿼리 전송 클래스 (규약에 맞게)
-			final String SQL = "INSERT INTO gallery (fileName, original, type, len, userId, pCreateTime) VALUES (?, ?, ?, ?, ?, now())";
+			final String SQL = "INSERT INTO gallery (fileName, original, type, len, userId, only, pCreateTime) VALUES (?, ?, ?, ?, ?, 0, now())";
 			pstmt = conn.prepareStatement(SQL);
 			// 3. SQL문 완성하기
 			pstmt.setString(1, fileName);
@@ -40,6 +40,39 @@ public class GalleryDao {
 			pstmt.setInt(4, len);
 			pstmt.setInt(5, userId);
 //			pstmt.setInt(7, degree);
+			// 4. SQL문 전송하기
+			// pstmt.executeQuery();
+			int result = pstmt.executeUpdate();
+
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
+		return -1;
+	}
+	
+	public int uploadonly(String fileName, String original, String type, int len, int userId) {
+		// 1. Stream 연결
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement pstmt = null;
+		try {
+			// 2. 쿼리 전송 클래스 (규약에 맞게)
+			final String SQL = "INSERT INTO gallery (fileName, original, type, len, userId, only, pCreateTime) VALUES (?, ?, ?, ?, ?, 1, now())";
+			pstmt = conn.prepareStatement(SQL);
+			// 3. SQL문 완성하기
+			pstmt.setString(1, fileName);
+			pstmt.setString(2, original);
+			pstmt.setString(3, type);
+			pstmt.setInt(4, len);
+			pstmt.setInt(5, userId);
 			// 4. SQL문 전송하기
 			// pstmt.executeQuery();
 			int result = pstmt.executeUpdate();
@@ -69,7 +102,7 @@ public class GalleryDao {
 		ResultSet rs = null;
 		try {
 			// 2. 쿼리 전송 클래스 (규약에 맞게)
-			final String SQL = "SELECT * FROM gallery ORDER BY pid DESC";
+			final String SQL = "SELECT * FROM gallery WHERE only = 1 ORDER BY pid DESC";
 			pstmt = conn.prepareStatement(SQL);
 			// 3. SQL문 완성하기
 			// 4. SQL문 전송하기
@@ -166,6 +199,38 @@ public class GalleryDao {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+		}
+		return -1;
+	}
+	
+	public int update(String fileName, String original, String type, int len, int userId, int pid) {
+		// 1. Stream 연결
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement pstmt = null;
+		try {
+			// 2. 쿼리 전송 클래스 (규약에 맞게)
+			final String SQL = "UPDATE gallery SET fileName = ?, original = ?, type = ?, len = ?, userId = ? WHERE pid = ?";
+			pstmt = conn.prepareStatement(SQL);
+			// 3. SQL문 완성하기
+			pstmt.setString(1, fileName);
+			pstmt.setString(2, original);
+			pstmt.setString(3, type);
+			pstmt.setInt(4, len);
+			pstmt.setInt(5, userId);
+			// 4. SQL문 전송하기
+			int result = pstmt.executeUpdate();
+
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
 		}
 		return -1;
 	}

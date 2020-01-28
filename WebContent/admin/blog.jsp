@@ -14,7 +14,7 @@
 	<a href="/yp/admin?cmd=blog" class="genric-btn primary large mt-3">Blog</a>
 	<a href="/yp/admin?cmd=gallery" class="genric-btn info-border large mt-3">Gallery</a>
 	<a href="/yp/admin?cmd=game" class="genric-btn danger-border large mt-3">Game</a>
-
+	<a href="/yp/admin?cmd=maillist" class="genric-btn warning-border large mt-3">Email</a>
 		<div class="section-top-border">
 			<h3 class="mb-30">글 페이지</h3>
 			<div class="progress-table-wrap">
@@ -49,3 +49,6 @@
 </div>
 
 <%@ include file="/include/footer.jsp"%>
+<%@ include file="/include/js.jsp"%>
+</body>
+</html>

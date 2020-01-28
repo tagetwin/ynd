@@ -32,6 +32,8 @@ public class BoardFactory {
 			return new BoardInformationAction();
 		}else if (cmd.equals("tip")) {
 			return new BoardTipAction();
+		}else if (cmd.equals("reply")) {
+			return new BoardReplyAction();
 		}
 		return null;	
 	}

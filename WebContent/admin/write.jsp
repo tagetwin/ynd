@@ -62,7 +62,7 @@
 						<div class="col-12">
 							<div class="form-group">
 							<label>Content</label>
-								<textarea class="form-control w-100" name="gameContent" id=summernote cols="30" rows="15" placeholder="Enter Content"></textarea>
+								<textarea class="form-control w-100" name="gameContent" cols="30" rows="15" placeholder="Enter Content"></textarea>
 							</div>
 						</div>
 					</div>
@@ -77,3 +77,7 @@
 </section>
 
 <%@ include file="/include/footer.jsp"%>
+<%@ include file="/include/js.jsp"%>
+
+</body>
+</html>
