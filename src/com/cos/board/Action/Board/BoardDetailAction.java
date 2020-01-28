@@ -1,6 +1,7 @@
 package com.cos.board.Action.Board;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,8 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cos.board.Action.Action;
 import com.cos.board.dao.BoardDao;
+import com.cos.board.dao.CommentDao;
 import com.cos.board.util.Script;
 import com.cos.board.viewmodel.BoardUserVM;
+import com.cos.board.viewmodel.CommentVM;
 
 public class BoardDetailAction implements Action {
 
@@ -30,10 +33,12 @@ public class BoardDetailAction implements Action {
 		BoardDao boardDao = BoardDao.getInstance();
 		BoardUserVM buVM = boardDao.findById(id);
 		
-				
+		CommentDao commentDao = CommentDao.getInstance();
+		List<CommentVM> commentVM = commentDao.findAll(id);
 		
 		if(buVM != null) {
 			req.setAttribute("buVM", buVM);
+			req.setAttribute("commentVM", commentVM);
 			RequestDispatcher dis = req.getRequestDispatcher("/board/detail.jsp");
 			dis.forward(req, resp);
 		}

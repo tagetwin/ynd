@@ -93,11 +93,59 @@
 						</div>
 					</div>
 				</div>
+				<div class="comments-area">
+					<h4>05 Comments</h4>
+					<div class="comment-list">
+						<c:forEach var="commentVM" items="${commentVM}" varStatus="status">
+							<div class="single-comment justify-content-between d-flex mb-5">
+								<div class="user justify-content-between d-flex">
 
-				<%@ include file="/include/comment.jsp"%>
+									<div class="thumb">
+										<img src="img/comment/comment_1.png" alt="">
+									</div>
+									<div class="desc">
+										<p class="comment">${commentVM.comment.comment}</p>
+										<div class="d-flex justify-content-between">
+											<div class="d-flex align-items-center">
+												<h5>
+													<a href="#">${commentVM.user.username}</a>
+												</h5>
+												<p class="date">${commentVM.comment.commentTime}</p>
+												<c:choose>
+													<c:when test="${sessionScope.principal.id eq commentVM.user.id}">
+														<a href="/yp/comment?cmd=delete&cid=${commentVM.comment.cid}&id=${commentVM.user.id}" class="genric-btn primary-border small ml-3">DEL</a>
+													</c:when>
+												</c:choose>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</c:forEach>
 
+					</div>
+					<c:choose>
+						<c:when test="${not empty sessionScope.principal}">
+							<div class="comment-form">
+								<h4>Leave a Reply</h4>
+								<form class="form-contact comment_form" method="post" action="/yp/comment?cmd=write">
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<textarea class="form-control w-100" name="comment" cols="30" rows="9" placeholder="Write Comment"></textarea>
+												<input type="hidden" value="${buVM.board.id}" name="id" />
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<button type="submit" class="button button-contactForm btn_1 boxed-btn">Send Message</button>
+									</div>
+								</form>
 
-				
+							</div>
+						</c:when>
+					</c:choose>
+				</div>
 			</div>
 			<div class="col-lg-4">
 				<div class="blog_right_sidebar">
@@ -145,17 +193,78 @@
 
 <%@ include file="/include/footer.jsp"%>
 <%@ include file="/include/js.jsp"%>
-<script>
-      $("#btn_add_box").on("click", function() {
-        var new_box = document.createElement("div");
-        // 1. new_box에 class 주는 법
-        // 2. id=container를 찾아서 append하는 법
 
-        $("#container").append("<h5><a>${sessionScope.principal.username}</a></h5></br>");
-        $("#container").append("<p class='comment'>Multiply sea night grass fourth day sea lesser rule open subdue female fill which them Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser</p>");
-        $("#container").append("<p class='date'>December 4, 2017 at 3:12 pm</p></br>");
-      });
-    </script>
+<script>
+	// function reply(){
+	// 	var comment = $('#comment').val();
+	// 	var data = {
+	// 			id : ${buVM.board.id},
+	// 			comment : comment
+	// 			}
+
+	// 	$.ajax({
+	// 		type:"POST",
+	// 		url : "/yp/comment?cmd=write",
+	// 		dataType : "text",
+	// 		contentType : "application/json",
+	// 		data : JSON.stringify(data),
+	// 		success : function(data){
+	// 			if(data==="ok"){
+	// 				alert("등록하였습니다.")
+	// 				$("#btn_add_box").on("click", function() {
+	// 			        var new_box = document.createElement("div");
+	// 			        // 1. new_box에 class 주는 법
+	// 			        // 2. id=container를 찾아서 append하는 법
+
+	// 			        $("#container").append("<h5><a>${sessionScope.principal.username}</a></h5></br>");
+	// 			        $("#container").append("<p class='comment'>"+comment+"</p>");
+	// 			        $("#container").append("<p class='date'>December 4, 2017 at 3:12 pm</p></br>");
+	// 			      });
+
+	// 			}else{
+	// 				alert("등록에 실패하였습니다.")
+	// 			}
+	// 		},
+	// 		error : function(data) {
+	// 			alert("통신실패1")
+	// 		}	
+	// 	});
+	// }	
+	// function replylist(){
+	// 	var data = {
+	// 			id : ${buVM.board.id},
+	// 			}
+
+	// 	$.ajax({
+	// 		type:"POST",
+	// 		url : "/yp/comment?cmd=list",
+	// 		dataType : "text",
+	// 		contentType : "application/json",
+	// 		data : JSON.stringify(data),
+	// 		success : function(data){
+	// 			if(data==="ok"){
+	// 				alert("댓글 조회 완료.")
+	// 				$("#btn_add_box").on("click", function() {
+	// 			        var new_box = document.createElement("div");
+	// 			        // 1. new_box에 class 주는 법
+	// 			        // 2. id=container를 찾아서 append하는 법
+
+	// 			        $("#container").append("<h5><a>${sessionScope.principal.username}</a></h5></br>");
+	// 			        $("#container").append("<p class='comment'>"+comment+"</p>");
+	// 			        $("#container").append("<p class='date'>December 4, 2017 at 3:12 pm</p></br>");
+	// 			      });
+
+	// 			}else{
+	// 				alert("등록에 실패하였습니다.")
+	// 			}
+	// 		},
+	// 		error : function(data) {
+	// 			alert("통신실패1")
+	// 		}	
+	// 	});
+
+	// }
+</script>
 
 </body>
 </html>
