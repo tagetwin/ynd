@@ -24,19 +24,18 @@ public class UserDao {
 		return instance;
 	}
 	
-	public int save(String username, String password) {
+	public int save(String username, String password, String info) {
 		// 1. Stream 연결
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
 		try {
 			// 2. 쿼리 전송 클래스 (규약에 맞게)
-			final String SQL = "INSERT INTO user (username, password, createTime) VALUES (?, ?, now())";
+			final String SQL = "INSERT INTO user (username, password, info, createTime) VALUES (?, ?, ?, now())";
 			pstmt = conn.prepareStatement(SQL);
 			// 3. SQL문 완성하기
 			pstmt.setString(1, username);
 			pstmt.setString(2, password);
-//			pstmt.setString(3, email);
-//			pstmt.setString(4, address);
+			pstmt.setString(3, info);
 			// 4. SQL문 전송하기
 			//pstmt.executeQuery();
 			int result = pstmt.executeUpdate();
@@ -56,19 +55,21 @@ public class UserDao {
 		return -1;
 	}
 
-	public int update(String password, String email, String address, int id) {
+	public int update(String password, String email, String address, String info, String fileName,int id) {
 		// 1. Stream 연결
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
 		try {
 			// 2. 쿼리 전송 클래스 (규약에 맞게)
-			final String SQL = "UPDATE user SET password = ?, email = ?, address = ? WHERE id = ?";
+			final String SQL = "UPDATE user SET password = ?, email = ?, address = ?, info = ?, fileName = ? WHERE id = ?";
 			pstmt = conn.prepareStatement(SQL);
 			// 3. SQL문 완성하기
 			pstmt.setString(1, password);
 			pstmt.setString(2, email);
 			pstmt.setString(3, address);
-			pstmt.setInt(4, id);
+			pstmt.setString(4, info);
+			pstmt.setString(5, fileName);
+			pstmt.setInt(6, id);
 			
 			// 4. SQL문 전송하기
 			//pstmt.executeQuery();
@@ -189,6 +190,7 @@ public class UserDao {
 				String email = rs.getString("email");
 				String address = rs.getString("address");
 				Timestamp createTime = rs.getTimestamp("createTime");
+				String fileName = rs.getString("fileName");
 				
 				 // User Builder
 				user = User.builder()
@@ -198,6 +200,7 @@ public class UserDao {
 						.email(email)
 						.createTime(createTime)
 						.address(address)
+						.fileName(fileName)
 						.build();
 			}
 			

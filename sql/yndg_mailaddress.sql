@@ -26,7 +26,7 @@ CREATE TABLE `mailaddress` (
   `mid` int(11) NOT NULL AUTO_INCREMENT,
   `reg_mail` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`mid`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,7 +35,7 @@ CREATE TABLE `mailaddress` (
 
 LOCK TABLES `mailaddress` WRITE;
 /*!40000 ALTER TABLE `mailaddress` DISABLE KEYS */;
-INSERT INTO `mailaddress` VALUES (5,'ssar@nate.com'),(6,'apple@nate.com');
+INSERT INTO `mailaddress` VALUES (9,'lss@naver.com'),(10,'apple@nate.com'),(11,'ssar@daum.net'),(12,'yndg@gmail.com');
 /*!40000 ALTER TABLE `mailaddress` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-28 19:02:45
+-- Dump completed on 2020-01-29 18:48:50

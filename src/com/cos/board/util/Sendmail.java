@@ -10,9 +10,13 @@ import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+
+import com.cos.board.Model.MailAddress;
 
 public class Sendmail {
-	public static void gmailSend() {
+	public static void gmailSend(HttpServletRequest req) {
 		String user = "yndgapdlf@gmail.com"; // 네이버일 경우 네이버 계정, gmail경우 gmail 계정
 		String password = "791346qwOP!@"; // 패스워드
 
@@ -34,23 +38,41 @@ public class Sendmail {
 			MimeMessage message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(user));
 
+			
 			// 수신자메일주소
-			message.addRecipient(Message.RecipientType.TO, new InternetAddress("tagetwin@naver.com"));
+//			message.addRecipient(Message.RecipientType.TO, new InternetAddress("tagetwin@naver.com"));
 
+//			String[] mail = req.getParameter("mail");
+			
+//			for(int i = 0; i<mail.length; i++) {
+//				message.setRecipient(Message.RecipientType.TO, new InternetAddress(mail[i]));
+//				System.out.println("mail :"+mail[i]);
+//				Transport.send(message); //// 전송
+//			}
+			
+//			message.addRecipients(Message.RecipientType.TO, addArray);
+//			InternetAddress [] addArray = new InternetAddress[i];
+//			addArray[0] = new InternetAddress("ktko0@ktko0.com");
+//			addArray[1] = new InternetAddress("ktko1@ktko1.com");
+//			addArray[2] = new InternetAddress("ktko2@ktko2.com");
+//			addArray[3] = new InternetAddress("ktko3@ktko3.com");
+//			addArray[4] = new InternetAddress("ktko4@ktko4.com");
+
+			String mailTitle = req.getParameter("mailTitle");
+			String mailContent = req.getParameter("mailContent");
+			
 			// Subject
-			message.setSubject("테스트메일입니다."); // 메일 제목을 입력
+			message.setSubject(mailTitle); // 메일 제목을 입력
 
 			// Text
-			message.setText("테스트 메일내용입니다."); // 메일 내용을 입력
+			message.setText(mailContent); // 메일 내용을 입력
 
 			// send the message
-			Transport.send(message); //// 전송
+//			Transport.send(message); //// 전송
 			System.out.println("message sent successfully...");
 		} catch (AddressException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

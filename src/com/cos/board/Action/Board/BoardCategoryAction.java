@@ -12,16 +12,20 @@ import com.cos.board.Action.Action;
 import com.cos.board.Model.Board;
 import com.cos.board.dao.BoardDao;
 
-public class BoardTipAction implements Action{
+public class BoardCategoryAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 1번. 받을 데이터 X
 		// 2번. DAO 연결 - Select 전체 Board 데이터
-		BoardDao boardDao = BoardDao.getInstance();
-		List<Board> boards = boardDao.findByTip();
 		
-		//<request에 List<Board>담기>
+		String category = req.getParameter("category");
+		
+		BoardDao boardDao = BoardDao.getInstance();
+		List<Board> boards = boardDao.findByCategory(category);
+
+		
+//		//<request에 List<Board>담기>
 		req.setAttribute("boards", boards);
 		
 		// 3번. X -> list.jsp 이동

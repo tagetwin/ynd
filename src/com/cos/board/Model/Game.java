@@ -25,4 +25,6 @@ public class Game {
 	private int directPrice;
 	private int recommendation;
 	private String fileName;
+	private String steamUrl;
+	private String directUrl;
 }

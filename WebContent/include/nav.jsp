@@ -167,13 +167,17 @@ td {
 				<form action="/yp/user?cmd=joinProc" method="POST">
 					<div class="row">
 						<div class="col-xl-12 col-md-12">
-							<input name="username" type="text" placeholder="Enter username" required/>
+							<input name="username" type="text" placeholder="Enter username" required />
 						</div>
-						<div class="col-xl-12 col-md-12">
-							<input id="pw1" name="password" type="password" placeholder="Enter Password" required/>
+						<div class="col-xl-6 col-md-6">
+							<input id="pw1" name="password" type="password" placeholder="Enter Password" required />
 						</div>
-						<div class="col-xl-12 col-md-12">
+						<div class="col-xl-6 col-md-6">
 							<input id="pw2" type="Password" placeholder="Confirm password" />
+						</div>
+						<div class="col-xl-12 col-md-12 mb-4">
+							<label>자기소개</label>
+							<textarea name="info" class="form-control" style="resize: none"></textarea>
 						</div>
 						<div class="alert alert-success" id="alert-success">비밀번호가 일치합니다.</div>
 						<div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
@@ -193,12 +197,12 @@ td {
 					<a href="/yp/"><img src="img/form-logo.png" alt="" /> </a>
 				</div>
 				<h3 class="text-center">Profile</h3>
-				<form action="/yp/user?cmd=profileProc" method="POST">
+				<form action="/yp/user?cmd=profileProc" method="POST" enctype="multipart/form-data">
 					<div class="row">
-						<div class="col-xl-12 col-md-12">
+						<div class="col-xl-6 col-md-6">
 							<label for="username">username</label> <input name="username" type="text" readonly="readonly" value="${sessionScope.principal.username}" />
 						</div>
-						<div class="col-xl-12 col-md-12">
+						<div class="col-xl-6 col-md-6">
 							<label for="password">password</label> <input id="pw3" name="password" type="password" placeholder="Enter Password" required="required" />
 						</div>
 						<div class="col-xl-12 col-md-12">
@@ -206,6 +210,14 @@ td {
 						</div>
 						<div class="col-xl-12 col-md-12">
 							<label for="address">address</label> <input id="address" name="address" type="text" value="${sessionScope.principal.address}" />
+						</div>
+						<div class="col-xl-12 col-md-12">
+							<label>자기소개</label>
+							<textarea  name="info" class="form-control" style="resize: none"></textarea>
+						</div>
+						<div class="col-xl-12 col-md-12">
+							<label>Profile Image</label>
+							<input name="filename1" type="file" placeholder="Enter info"/>
 						</div>
 						<div class="col-xl-12">
 							<button type="submit" class="boxed_btn_green mb-3">회원정보수정</button>

@@ -33,7 +33,7 @@ CREATE TABLE `comment` (
   KEY `userId` (`userId`),
   CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`id`) REFERENCES `board` (`id`),
   CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,6 +42,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
+INSERT INTO `comment` VALUES (2,5,'',1,'2020-01-29 00:16:45'),(4,4,'콘콘 ssar',2,'2020-01-29 00:19:44'),(12,8,'다사ㅣ델',4,'2020-01-29 05:48:05'),(13,8,'123',4,'2020-01-29 05:48:29'),(14,8,'123',2,'2020-01-29 05:55:20'),(16,8,'123',1,'2020-01-29 05:57:57'),(17,12,'샘플 댓글입니다.',3,'2020-01-29 08:40:34'),(18,12,'샘플댓글입니다.2',4,'2020-01-29 08:52:15'),(19,12,'샘플댓글입니다.3',1,'2020-01-29 08:52:37');
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-28 19:02:44
+-- Dump completed on 2020-01-29 18:48:49

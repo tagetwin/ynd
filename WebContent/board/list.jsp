@@ -32,7 +32,7 @@
 								<p class="excert">${board.content}</p>
 								<ul class="blog-info-link">
 									<li><i class="fa fa-user"></i>&nbsp ${board.category}</li>
-									<li><i class="fa fa-comments"></i> 03 Comments</li>
+									<li><i class="fa fa-comments"></i> ${board.comment_cnt} Comments</li>
 								</ul>
 							</div>
 						</article>
@@ -72,16 +72,16 @@
 					<aside class="single_sidebar_widget post_category_widget">
 						<h4 class="widget_title">Category</h4>
 						<ul class="list cat-list">
-							<li><a href="/yp/board?cmd=review" class="d-flex">
+							<li><a href="/yp/board?cmd=category&category=review" class="d-flex">
 									<p>Review</p>
 							</a></li>
-							<li><a href="/yp/board?cmd=recommendation" class="d-flex">
+							<li><a href="/yp/board?cmd=category&category=Recommendation" class="d-flex">
 									<p>Recommendation</p>
 							</a></li>
-							<li><a href="/yp/board?cmd=information" class="d-flex">
+							<li><a href="/yp/board?cmd=category&category=Information" class="d-flex">
 									<p>Information</p>
 							</a></li>
-							<li><a href="/yp/board?cmd=tip" class="d-flex">
+							<li><a href="/yp/board?cmd=category&category=Tip" class="d-flex">
 									<p>Tip</p>
 							</a></li>
 						</ul>

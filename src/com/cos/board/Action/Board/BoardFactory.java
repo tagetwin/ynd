@@ -24,16 +24,10 @@ public class BoardFactory {
 			return new BoardSearchAction();
 		}else if (cmd.equals("list")) {
 			return new BoardListAction();
-		}else if (cmd.equals("review")) {
-			return new BoardReviewAction();
-		}else if (cmd.equals("recommendation")) {
-			return new BoardRecommendationAction();
-		}else if (cmd.equals("information")) {
-			return new BoardInformationAction();
-		}else if (cmd.equals("tip")) {
-			return new BoardTipAction();
-		}else if (cmd.equals("reply")) {
-			return new BoardReplyAction();
+		}else if (cmd.equals("category")) {
+			return new BoardCategoryAction();
+		}else if (cmd.equals("move")){
+			return new BoardMoveAction();
 		}
 		return null;	
 	}

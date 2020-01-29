@@ -55,11 +55,15 @@ public class AdminGameUpdateProcAction implements Action {
 		int steamPrice = Integer.parseInt(multi.getParameter("steamPrice"));
 		int directPrice = Integer.parseInt(multi.getParameter("directPrice"));
 		
+		String steamUrl = multi.getParameter("steamUrl");
+		String directUrl = multi.getParameter("directUrl");
+		
+		
 		String date = multi.getParameter("publishDate");
 		Date publishDate = Date.valueOf(date);	
 		
 		GameDao gameDao = GameDao.getInstance();
-		int result = gameDao.update(gameTitle, gameContent, genre, publisher, steamPrice, directPrice, publishDate, fileName, gid);
+		int result = gameDao.update(gameTitle, gameContent, genre, publisher, steamPrice, directPrice, publishDate, fileName, steamUrl,directUrl, gid);
 		
 		
 		if(result == 1) {

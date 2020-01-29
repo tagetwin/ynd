@@ -29,9 +29,11 @@ CREATE TABLE `user` (
   `email` varchar(30) DEFAULT NULL,
   `address` varchar(50) DEFAULT NULL,
   `createTime` timestamp NULL DEFAULT NULL,
+  `info` text,
+  `filename` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +42,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'admin','1234',NULL,NULL,'2020-01-28 00:51:43'),(2,'ssar','1234',NULL,NULL,'2020-01-28 01:49:21'),(3,'yndg','1234',NULL,NULL,'2020-01-28 02:48:17');
+INSERT INTO `user` VALUES (1,'admin','1234','','','2020-01-28 00:51:43','','Screenshot_86.png'),(2,'ssar','1234','','','2020-01-28 01:49:21','','b16.jpg'),(3,'yndg','1234','','','2020-01-28 02:48:17','','Screenshot_102.png'),(4,'del','1234','del@nate.com','경상남도 창원시 진해구 백구로 41-1, 이순신아파트 (광화동)','2020-01-29 05:38:49','','Screenshot_36.png');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-28 19:02:45
+-- Dump completed on 2020-01-29 18:48:50

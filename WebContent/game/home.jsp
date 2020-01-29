@@ -32,7 +32,7 @@
 				<div class="section_title text-center mb-100">
 					<h3>Recent Post</h3>
 					<p>
-						Your domain control panel is designed for ease-of-use and <br /> allows for all aspects of your domains.
+						There is Recent Post <br /> .Read
 					</p>
 				</div>
 			</div>
@@ -52,8 +52,7 @@
 							</div>
 							<h3>
 								<a href="/yp/board?cmd=detail&id=${board.id}">${board.boardTitle}</a>
-							</h3>
-							<p class="news_info">${board.content}</p>
+							</h3>							
 						</div>
 					</div>
 				</div>

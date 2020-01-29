@@ -27,6 +27,7 @@ public class CommentWriteAction implements Action {
 			req.getParameter("id") == null || req.getParameter("id").equals("")
 		) {
 			Script.back(resp, "잘못된 접근입니다.");
+			return;
 		}
 		
 		int userId = user.getId();

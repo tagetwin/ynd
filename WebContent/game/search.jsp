@@ -43,9 +43,29 @@
 							</h4>
 						</div>
 						<div class="prising_content">
-							<i class="far fa-thumbs-up"></i> <a>${game.recommendation}</a> <a href="https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/" target="_blank"> <img src="img/game/steam.png"
-								width="100" alt=""></a> <a><fmt:formatNumber value="${game.steamPrice}" /></a> <a href="https://directg.net/game/game_page.html?product_code=50002056" target="_blank"> <img
-								src="img/game/dg.png" width="100" alt=""></a> <a><fmt:formatNumber value="${game.directPrice}" /></a>
+							<i class="far fa-thumbs-up"></i>
+							<a>${game.recommendation}</a>
+
+							<c:choose>
+								<c:when test="${game.steamPrice eq 999999}">
+								</c:when>
+								<c:otherwise>
+									<a href="${game.steamUrl}" target="_blank">
+									<img src="img/game/steam.png" width="100" alt=""></a>
+									<a><fmt:formatNumber value="${game.steamPrice}" /></a>	
+								</c:otherwise>
+							</c:choose>
+							
+							<c:choose>
+								<c:when test="${game.directPrice eq 999999}">
+								</c:when>
+								<c:otherwise>
+									<a href="${game.directUrl}" target="_blank">
+									<img src="img/game/dg.png" width="100" alt=""></a>
+									<a><fmt:formatNumber value="${game.directPrice}" /></a>
+								</c:otherwise>
+							</c:choose>
+							
 						</div>
 					</div>
 				</div>

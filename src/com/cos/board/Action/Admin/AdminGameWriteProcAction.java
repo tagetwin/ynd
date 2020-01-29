@@ -59,6 +59,9 @@ public class AdminGameWriteProcAction implements Action {
 		String date = multi.getParameter("publishDate");
 		Date publishDate = Date.valueOf(date);
 		
+		String steamUrl = multi.getParameter("steamUrl");
+		String directUrl = multi.getParameter("directUrl");
+		
 //		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 //		
 //		java.util.Date publishDate = null;
@@ -69,8 +72,9 @@ public class AdminGameWriteProcAction implements Action {
 //		}
 		
 		GameDao gameDao = GameDao.getInstance();
-		int result = gameDao.save(gameTitle, gameContent, genre, publisher, steamPrice, directPrice, publishDate, fileName);
-		
+		int result = gameDao.save(gameTitle, gameContent, genre, publisher, steamPrice, steamUrl, directUrl, directPrice, publishDate, fileName);
+		System.out.println("directUrl"+directUrl);
+		System.out.println("result"+result);
 		if(result == 1) {
 			resp.sendRedirect("/yp/admin?cmd=game");
 		}else {
@@ -82,3 +86,4 @@ public class AdminGameWriteProcAction implements Action {
 	}
 
 }
+

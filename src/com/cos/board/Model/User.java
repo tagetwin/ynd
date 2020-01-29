@@ -20,6 +20,8 @@ public class User {
 	private String email;
 	private String address;
 	private Timestamp createTime;
+	private String info;
+	private String fileName;
 	
 	
 }

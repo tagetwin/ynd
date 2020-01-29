@@ -20,8 +20,8 @@
 					<div class="blog_details">
 						<h2>${buVM.board.boardTitle}</h2>
 						<ul class="blog-info-link mt-3 mb-4">
-							<li><a href="#"><i class="fa fa-user"></i>${buVM.board.category}</a></li>
-							<li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+							<li><i class="fa fa-user"></i>${buVM.board.category}</li>
+							<li><i class="fa fa-comments"></i> ${buVM.board.comment_cnt} Comments</li>
 							<c:choose>
 								<c:when test="${sessionScope.principal.id eq buVM.board.userId}">
 									<li><a href="/yp/board?cmd=update&userId=${buVM.board.userId}&id=${buVM.board.id}"><i class="fas fa-edit"></i> Update </a></li>
@@ -49,16 +49,16 @@
 						<div class="row">
 							<div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
 								<div class="thumb">
-									<a href="#"> <img class="img-fluid" src="img/post/preview.png" alt="">
+									<a href="/yp/board?cmd=detail&id=${buVM.board.id - 1}"> <img class="img-fluid" src="img/post/preview.png" alt="">
 									</a>
 								</div>
 								<div class="arrow">
-									<a href="#"> <span class="lnr text-white ti-arrow-left"></span>
+									<a> <span class="lnr text-white ti-arrow-left"></span>
 									</a>
 								</div>
 								<div class="detials">
 									<p>Prev Post</p>
-									<a href="#">
+									<a>
 										<h4>Space The Final Frontier</h4>
 									</a>
 								</div>
@@ -66,17 +66,16 @@
 							<div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
 								<div class="detials">
 									<p>Next Post</p>
-									<a href="#">
+									<a>
 										<h4>Telescopes 101</h4>
 									</a>
 								</div>
 								<div class="arrow">
-									<a href="#"> <span class="lnr text-white ti-arrow-right"></span>
+									<a> <span class="lnr text-white ti-arrow-right"></span>
 									</a>
 								</div>
 								<div class="thumb">
-									<a href="#"> <img class="img-fluid" src="img/post/next.png" alt="">
-									</a>
+									<a href="/yp/board?cmd=detail&id=${buVM.board.id + 1}"><img class="img-fluid" src="img/post/next.png" alt=""></a>
 								</div>
 							</div>
 						</div>
@@ -84,24 +83,24 @@
 				</div>
 				<div class="blog-author">
 					<div class="media align-items-center">
-						<img src="img/blog/author.png" alt="">
+						<img src="/yp/upload/${buVM.user.fileName}" alt="">
 						<div class="media-body">
 							<a href="#">
 								<h4>${buVM.user.username}</h4>
 							</a>
-							<p>Second divided from form fish beast made. Every of seas all gathered use saying you're, he our dominion twon Second divided from</p>
+							<p>${buVM.user.info}</p>
 						</div>
 					</div>
 				</div>
 				<div class="comments-area">
-					<h4>05 Comments</h4>
+					<h4>${buVM.board.comment_cnt} Comments</h4>
 					<div class="comment-list">
 						<c:forEach var="commentVM" items="${commentVM}" varStatus="status">
 							<div class="single-comment justify-content-between d-flex mb-5">
 								<div class="user justify-content-between d-flex">
 
 									<div class="thumb">
-										<img src="img/comment/comment_1.png" alt="">
+										<img src="/yp/upload/${commentVM.user.fileName}" alt="">
 									</div>
 									<div class="desc">
 										<p class="comment">${commentVM.comment.comment}</p>
@@ -113,7 +112,7 @@
 												<p class="date">${commentVM.comment.commentTime}</p>
 												<c:choose>
 													<c:when test="${sessionScope.principal.id eq commentVM.user.id}">
-														<a href="/yp/comment?cmd=delete&cid=${commentVM.comment.cid}&id=${commentVM.user.id}" class="genric-btn primary-border small ml-3">DEL</a>
+														<a href="/yp/comment?cmd=delete&cid=${commentVM.comment.cid}&bid=${buVM.board.id}&id=${commentVM.user.id}" class="genric-btn primary-border small ml-3">DEL</a>
 													</c:when>
 												</c:choose>
 											</div>
@@ -132,7 +131,7 @@
 									<div class="row">
 										<div class="col-12">
 											<div class="form-group">
-												<textarea class="form-control w-100" name="comment" cols="30" rows="9" placeholder="Write Comment"></textarea>
+												<textarea class="form-control w-100" name="comment" cols="30" rows="9" placeholder="Write Comment" required></textarea>
 												<input type="hidden" value="${buVM.board.id}" name="id" />
 											</div>
 										</div>
@@ -171,16 +170,16 @@
 					<aside class="single_sidebar_widget post_category_widget">
 						<h4 class="widget_title">Category</h4>
 						<ul class="list cat-list">
-							<li><a href="/yp/board?cmd=review" class="d-flex">
+							<li><a href="/yp/board?cmd=category&category=review" class="d-flex">
 									<p>Review</p>
 							</a></li>
-							<li><a href="/yp/board?cmd=recommendation" class="d-flex">
+							<li><a href="/yp/board?cmd=category&category=Recommendation" class="d-flex">
 									<p>Recommendation</p>
 							</a></li>
-							<li><a href="/yp/board?cmd=information" class="d-flex">
+							<li><a href="/yp/board?cmd=category&category=Information" class="d-flex">
 									<p>Information</p>
 							</a></li>
-							<li><a href="/yp/board?cmd=tip" class="d-flex">
+							<li><a href="/yp/board?cmd=category&category=Tip" class="d-flex">
 									<p>Tip</p>
 							</a></li>
 						</ul>

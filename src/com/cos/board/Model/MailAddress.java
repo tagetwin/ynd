@@ -14,4 +14,5 @@ import lombok.NoArgsConstructor;
 public class MailAddress {
 	private int mid;
 	private String reg_mail;
+	private String[] mail;
 }

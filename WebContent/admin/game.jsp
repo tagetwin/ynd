@@ -30,27 +30,45 @@
 					<th>Date</th>
 					<th>SPrice</th>
 					<th>DPrice</th>
+					<th>sUrl</th>
+					<th>dUrl</th>
 					<th>Like</th>
 					<th>Update</th>
 					<th>Delete</th>
 				</tr>
 			</thead>
 			<tbody>
-			<c:forEach var="game" items="${games}" varStatus="status">
-				<tr>
-					<td><a href="/yp/game?cmd=detail&gid=${game.gid}">${game.gid}</a></td>
-					<td>${game.gameTitle}</td>
-					<td>${game.gameContent}</td>
-					<td>${game.genre}</td>
-					<td>${game.publisher}</td>
-					<td>${game.publishDate}</td>
-					<td>${game.steamPrice}</td>
-					<td>${game.directPrice}</td>
-					<td>${game.recommendation}</td>
-					<td><a href="/yp/admin?cmd=update&gid=${game.gid}" class="genric-btn primary-border small px-3">수정</a></td>
-					<td><a href="/yp/admin?cmd=delete&gid=${game.gid}" class="genric-btn primary-border small px-3">삭제</a></td>
-				</tr>
-			</c:forEach>
+				<c:forEach var="game" items="${games}" varStatus="status">
+					<tr>
+						<td><a href="/yp/game?cmd=detail&gid=${game.gid}">${game.gid}</a></td>
+						<td>${game.gameTitle}</td>
+						<td>${game.gameContent}</td>
+						<td>${game.genre}</td>
+						<td>${game.publisher}</td>
+						<td>${game.publishDate}</td>
+						<c:choose>
+							<c:when test="${game.steamPrice eq 999999}">
+								<td>판매하지 않음</td>
+							</c:when>
+							<c:otherwise>
+								<td>${game.steamPrice}</td>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${game.directPrice eq 999999}">
+								<td>판매하지 않음</td>
+							</c:when>
+							<c:otherwise>
+								<td>${game.directPrice}</td>
+							</c:otherwise>
+						</c:choose>
+						<td>${game.steamUrl}</td>
+						<td>${game.directUrl}</td>
+						<td>${game.recommendation}</td>
+						<td><a href="/yp/admin?cmd=update&gid=${game.gid}" class="genric-btn primary-border small px-3">수정</a></td>
+						<td><a href="/yp/admin?cmd=delete&gid=${game.gid}" class="genric-btn primary-border small px-3">삭제</a></td>
+					</tr>
+				</c:forEach>
 
 			</tbody>
 		</table>

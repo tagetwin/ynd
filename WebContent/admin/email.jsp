@@ -37,9 +37,34 @@
 			</c:forEach>
 			</tbody>
 		</table>
+		<a href="#test-form3" class="btn">메일 보내기</a>
 	</div>
 </div>
 
+<div id="test-form3" class="white-popup-block mfp-hide">
+		<div class="popup_box ">
+			<div class="popup_inner">
+				<div class="logo text-center">
+					<a href="/yp/"><img src="img/form-logo.png" alt="" /> </a>
+				</div>
+				<h3 class="text-center">Profile</h3>
+				<form action="/yp/user?cmd=profileProc" method="POST">
+					<div class="row">
+						
+						<div class="col-xl-12">
+							<button type="submit" class="boxed_btn_green mb-3">회원정보수정</button>
+						</div>
+					</div>
+				</form>
+				<div class="col-xl-12">
+					<form action="/yp/user?cmd=delete" method="post">
+						<input type="hidden" name="id" value="${sessionScope.principal.id}" />
+						<button type="submit" class="boxed_btn_red">탈퇴</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 
 <%@ include file="/include/footer.jsp"%>
 <%@ include file="/include/js.jsp"%>

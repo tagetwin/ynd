@@ -21,6 +21,7 @@ public class Board {
 	private String fileName;
 	private String category;
 	private Timestamp boardCreateTime;
+	private int comment_cnt;
 	
 //	public String getBoardtitle() {
 //		boardtitle = boardtitle.replaceAll("<", "&lt;");

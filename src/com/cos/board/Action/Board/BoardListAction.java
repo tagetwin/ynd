@@ -19,7 +19,7 @@ public class BoardListAction implements Action{
 		// 1번. 받을 데이터 X
 		// 2번. DAO 연결 - Select 전체 Board 데이터
 		BoardDao boardDao = BoardDao.getInstance();
-		List<Board> boards = boardDao.findAll();
+		List<Board> boards = boardDao.findAllComment();
 
 		
 		//<request에 List<Board>담기>

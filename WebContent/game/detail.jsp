@@ -35,13 +35,31 @@ p {
 						<fmt:formatDate value="${games.publishDate}" pattern="yyyy년 MM월 dd일" />
 					</p>
 					<br>
-					<p>추천수 : <span class="rec_count"></span></p>
+					<p>
+						추천수 : <span class="rec_count"></span>
+					</p>
 					<br>
 					<p>최저가격 : ${games.steamPrice gt games.directPrice ? games.directPrice : games.steamPrice}</p>
 					<br>
+
+					<c:choose>
+						<c:when test="${games.steamPrice ne 999999}">
+						<div>
+							<a href="${games.steamUrl}" target="_blank"><img src="img/game/steam.png" width="100" alt=""></a>
+							</div>
+						</c:when>
+					</c:choose>
+
+					<c:choose>
+						<c:when test="${games.directPrice ne 999999}">
+						<div>
+							<a href="${games.directUrl}" target="_blank"><img src="img/game/dg.png" width="100" alt=""></a>
+							</div>
+						</c:when>
+					</c:choose>
 					<c:choose>
 						<c:when test="${not empty sessionScope.principal}">
-							<div>
+							<div class="mt-5">
 								<button id="likegame" onclick="likegame()" type="button" class="btn btn-info">
 									<i class="fas fa-thumbs-up"></i>
 								</button>
@@ -66,7 +84,7 @@ $(function(){
 function likegame(){
 	
 	var data = {
-			userId : ${sessionScope.principal.id},
+// 			userId : ${sessionScope.principal.id},
 			gid : ${games.gid}
 			}
 	

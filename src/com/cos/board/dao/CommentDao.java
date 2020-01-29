@@ -9,10 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.cos.board.DB.DBUtil;
-import com.cos.board.Model.Board;
 import com.cos.board.Model.Comment;
 import com.cos.board.Model.User;
-import com.cos.board.viewmodel.BoardUserVM;
 import com.cos.board.viewmodel.CommentVM;
 
 // User Test
@@ -162,7 +160,7 @@ public class CommentDao {
 		try {
 			// 2. 쿼리 전송 클래스 (규약에 맞게)
 			StringBuffer sb = new StringBuffer();
-			sb.append("SELECT c.comment, u.username, c.commentTime, c.cid, u.id");
+			sb.append("SELECT c.comment, u.username, c.commentTime, c.cid, u.id, u.fileName");
 			sb.append(" FROM comment c inner join user u");
 			sb.append(" ON c.userId = u.id");
 			sb.append(" WHERE c.id = ?");
@@ -181,6 +179,7 @@ public class CommentDao {
 				String username = rs.getString("u.username");
 				int cid = rs.getInt("c.cid");
 				int uid = rs.getInt("u.id");
+				String fileName = rs.getString("u.fileName");
 				
 				Comment comment1 = Comment.builder()
 						.cid(cid)
@@ -192,6 +191,7 @@ public class CommentDao {
 				User user = User.builder()
 						.username(username)
 						.id(uid)
+						.fileName(fileName)
 						.build();
 				
 				commentVM = new CommentVM(comment1, user);

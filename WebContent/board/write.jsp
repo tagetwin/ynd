@@ -15,7 +15,7 @@
 				<h2 class="contact-title">Post</h2>
 			</div>
 			<div class="col-lg-12">
-				<form class="form-contact contact_form" action="/yp/board?cmd=writeProc" method="post" novalidate="novalidate" enctype="multipart/form-data">
+				<form class="form-contact contact_form" action="/yp/board?cmd=writeProc" method="post" enctype="multipart/form-data">
 					<div class="row">
 						<div class="col-sm-2">
 							<div class="form-group">
@@ -34,7 +34,7 @@
 						</div>
 						<div class="col-12">
 							<div class="form-group">
-								<input type="file" name="filename1" id="filename1" class="form-control" required/>
+								<input type="file" name="filename1" id="filename1" class="form-control" />
 							</div>
 						</div>
 						<div class="col-12">

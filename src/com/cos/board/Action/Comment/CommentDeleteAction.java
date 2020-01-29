@@ -24,8 +24,8 @@ public class CommentDeleteAction implements Action {
 			Script.back(resp, "잘못된 접근입니다.");
 			return;
 		}
-		
 		int id = Integer.parseInt(req.getParameter("id"));
+		int bid = Integer.parseInt(req.getParameter("bid"));
 		int userId = user.getId();
 		
 		if(userId != id) {
@@ -39,7 +39,7 @@ public class CommentDeleteAction implements Action {
 		int result = commentDao.delete(cid);
 		
 		if(result == 1) {
-			resp.sendRedirect("/yp/board?cmd=detail&id="+id);
+			resp.sendRedirect("/yp/board?cmd=detail&id="+bid);
 		}else {
 			Script.back(resp, "댓글 등록이 실패했습니다.");
 			

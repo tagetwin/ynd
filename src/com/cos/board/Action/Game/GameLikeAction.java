@@ -6,9 +6,11 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.cos.board.Action.Action;
 import com.cos.board.Model.Game;
+import com.cos.board.Model.User;
 import com.cos.board.dao.GameDao;
 import com.cos.board.dao.GameLikeDao;
 import com.cos.board.dto.GamelikeDto;
@@ -22,11 +24,11 @@ public class GameLikeAction implements Action {
 
 		BufferedReader br = req.getReader();
 		String responseText = br.readLine();
-//		int gl = Integer.parseInt(responseText);
-//		System.out.println(gl);
 		
 		System.out.println("responseText :"+responseText);
-		
+		HttpSession ssession = req.getSession();
+		User user = (User)ssession.getAttribute("principal");
+		int userId =user.getId();
 		Gson gson = new Gson();
 			
 		GamelikeDto gamelikeDto = gson.fromJson(responseText, GamelikeDto.class);
@@ -36,7 +38,7 @@ public class GameLikeAction implements Action {
 		
 		GameDao gameDao1 = GameDao.getInstance();
 		int gid = gamelikeDto.getGid();
-		int userId = gamelikeDto.getUserId();
+//		int userId = gamelikeDto.getUserId();
 		Game game= gameDao1.recCheck(gid, userId);
 		System.out.println(game);
 		if(game ==null) {
