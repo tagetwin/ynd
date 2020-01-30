@@ -20,7 +20,7 @@ public class BoardUpdateProcAction implements Action {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String uploadPath="C:/src/jspWork/upload";
+		String uploadPath="/var/webapps/upload/";
 		int size = 10*1024*1024;
 		MultipartRequest multi = new MultipartRequest(req, uploadPath, size, "UTF-8", new DefaultFileRenamePolicy());
 		

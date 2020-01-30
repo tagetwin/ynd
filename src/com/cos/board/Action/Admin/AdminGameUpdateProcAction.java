@@ -28,7 +28,7 @@ public class AdminGameUpdateProcAction implements Action {
 			return;	
 		}
 		
-		String uploadPath="C:/src/jspWork/upload";
+		String uploadPath="/var/webapps/upload/";
 		int size = 10*1024*1024;
 		MultipartRequest multi = new MultipartRequest(req, uploadPath, size, "UTF-8", new DefaultFileRenamePolicy());
 		

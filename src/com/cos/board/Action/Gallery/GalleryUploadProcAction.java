@@ -22,7 +22,7 @@ public class GalleryUploadProcAction implements Action {
 //		String uploadPath = scontext.getRealPath("upload");
 //		String uploadPath="C:/src/jspWork/yp/WebContent/img/gallery";
 		//외부폴더 참조 방식
-		String uploadPath="C:/src/jspWork/upload";
+		String uploadPath="/var/webapps/upload/";
 		int size = 10*1024*1024;
 		
 		MultipartRequest multi = new MultipartRequest(req, uploadPath, size, "UTF-8", new DefaultFileRenamePolicy());
